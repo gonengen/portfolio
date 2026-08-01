@@ -13,10 +13,10 @@ import executiveImage from '@assets/robonote/robonote-Executive Action Center-sq
 import salesImage from '@assets/robonote/robonote-Sales Review Coverage-square.png'
 import trendsImage from '@assets/robonote/robonote-Strategic Trends-square.png'
 import trendingImage from '@assets/robonote/robonote-Trending-square.png'
-import trustFirstIcon from '@assets/easy_coupons /Trust first.svg'
-import reduceUncertaintyIcon from '@assets/easy_coupons /Reduce uncertainty.svg'
-import clearValueIcon from '@assets/easy_coupons /Clear value.svg'
-import confidentDecisionsIcon from '@assets/easy_coupons /Confident decisions.svg'
+import responsibilityFirstIcon from '@assets/robonote/Responsibility first.svg'
+import prioritiesOverMetricsIcon from '@assets/robonote/Priorities over metrics.svg'
+import evidenceBackedIcon from '@assets/robonote/Evidence-backed.svg'
+import familiarAlwaysLocalIcon from '@assets/robonote/Familiar, always local.svg'
 
 function splitParagraphs(text) {
   return text.split('\n\n').flatMap((part, index, all) => (index < all.length - 1 ? [part, ''] : [part]))
@@ -85,10 +85,10 @@ export const robonoteData = {
       intro:
         'Design Principles. Every decision followed four principles that guided how conversation intelligence was structured for each role.',
       principles: [
-        { title: 'Trust first', icon: trustFirstIcon },
-        { title: 'Reduce uncertainty', icon: reduceUncertaintyIcon },
-        { title: 'Clear value', icon: clearValueIcon },
-        { title: 'Confident decisions', icon: confidentDecisionsIcon },
+        { title: 'Responsibility first', icon: responsibilityFirstIcon },
+        { title: 'Priorities over metrics', icon: prioritiesOverMetricsIcon },
+        { title: 'Evidence-backed', icon: evidenceBackedIcon },
+        { title: 'Familiar, always local', icon: familiarAlwaysLocalIcon },
       ],
     },
     {

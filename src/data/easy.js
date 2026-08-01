@@ -9,10 +9,10 @@ import popularImage from '@assets/easy_coupons /easy-Coupons-Popular-square.png'
 import supportImage from '@assets/easy_coupons /easy-Coupons-support-square.png'
 import offerAltImage from '@assets/easy_coupons /easy-Coupons-Offerד-square.png'
 import overviewImage from '@assets/easy_coupons /easy-Coupons-overview-wide.png'
-import responsibilityFirstIcon from '@assets/robonote/Responsibility first.svg'
-import prioritiesOverMetricsIcon from '@assets/robonote/Priorities over metrics.svg'
-import evidenceBackedIcon from '@assets/robonote/Evidence-backed.svg'
-import familiarAlwaysLocalIcon from '@assets/robonote/Familiar, always local.svg'
+import trustFirstIcon from '@assets/easy_coupons /Trust first.svg'
+import reduceUncertaintyIcon from '@assets/easy_coupons /Reduce uncertainty.svg'
+import clearValueIcon from '@assets/easy_coupons /Clear value.svg'
+import confidentDecisionsIcon from '@assets/easy_coupons /Confident decisions.svg'
 
 function splitParagraphs(text) {
   return text.split('\n\n').flatMap((part, index, all) => (index < all.length - 1 ? [part, ''] : [part]))
@@ -95,10 +95,10 @@ export const easyData = {
       intro:
         'Design Principles. Four principles followed directly from the insight that trust — not discount size — decides whether people act.',
       principles: [
-        { title: 'Responsibility first', icon: responsibilityFirstIcon },
-        { title: 'Priorities over metrics', icon: prioritiesOverMetricsIcon },
-        { title: 'Evidence-backed', icon: evidenceBackedIcon },
-        { title: 'Familiar, always local', icon: familiarAlwaysLocalIcon },
+        { title: 'Trust first', icon: trustFirstIcon },
+        { title: 'Reduce uncertainty', icon: reduceUncertaintyIcon },
+        { title: 'Clear value', icon: clearValueIcon },
+        { title: 'Confident decisions', icon: confidentDecisionsIcon },
       ],
     },
     {

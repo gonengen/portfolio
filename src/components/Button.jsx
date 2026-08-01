@@ -30,7 +30,9 @@ export default function Button({
           {leftIcon}
         </span>
       )}
-      <span className="group-hover:underline">{children}</span>
+      <span className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out after:content-[''] group-hover:after:scale-x-100">
+        {children}
+      </span>
       {rightIcon && (
         <span className="inline-flex size-6 shrink-0 items-center justify-center text-secondary transition-colors group-hover:text-primary [&_img]:size-6 [&_svg]:size-6">
           {rightIcon}
