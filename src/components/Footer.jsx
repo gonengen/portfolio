@@ -1,0 +1,88 @@
+import { useState } from 'react'
+import mailIcon from '@assets/Icons/Property 1=mail.svg'
+import linkedinIcon from '@assets/Icons/Property 1=linkedin.svg'
+import githubIcon from '@assets/Icons/Property 1=github.svg'
+import adplistIcon from '@assets/Icons/Property 1=adplist.svg'
+import mediumIcon from '@assets/Icons/Property 1=medium.svg'
+import dribbbleIcon from '@assets/Icons/Property 1=dribbble.svg'
+import callMadeIcon from '@assets/Icons/Property 1=call_made.svg'
+import Button from './Button'
+
+const EMAIL = 'gonengen@gmail.com'
+
+const socialLinks = [
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/gonen-maatuk-5b2ab8380/',
+    icon: linkedinIcon,
+  },
+  {
+    label: 'Github',
+    href: 'https://github.com/gonengen',
+    icon: githubIcon,
+  },
+  {
+    label: 'ADPlist',
+    href: 'https://adplist.org/mentors/gonen-maatuk-clUB',
+    icon: adplistIcon,
+  },
+  {
+    label: 'medium',
+    href: 'https://medium.com/@darealgoni',
+    icon: mediumIcon,
+  },
+  {
+    label: 'Dribbble',
+    href: 'https://dribbble.com/gonen-maatuk',
+    icon: dribbbleIcon,
+  },
+]
+
+export default function Footer() {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 2000)
+    } catch {
+      window.location.href = `mailto:${EMAIL}`
+    }
+  }
+
+  return (
+    <footer
+      id="footer"
+      className="flex w-full flex-col gap-[var(--spacing-stack)] border-t border-secondary py-[var(--spacing-stack)]"
+    >
+      <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+        <p className="text-display flex-1 text-[128px] font-thin leading-none tracking-[-2.56px] text-primary max-lg:text-7xl max-md:text-5xl">
+          GONEN MAATUK@AI
+        </p>
+        <Button
+          variant="bordered"
+          onClick={handleCopyEmail}
+          leftIcon={<img src={mailIcon} alt="" aria-hidden="true" />}
+          ariaLabel="Copy email address"
+        >
+          {copied ? 'Copied!' : 'Copy Email'}
+        </Button>
+      </div>
+
+      <div className="flex w-full flex-wrap items-start justify-between gap-4">
+        {socialLinks.map((link) => (
+          <Button
+            key={link.label}
+            href={link.href}
+            external
+            leftIcon={<img src={link.icon} alt="" aria-hidden="true" />}
+            rightIcon={<img src={callMadeIcon} alt="" aria-hidden="true" />}
+          >
+            {link.label}
+          </Button>
+        ))}
+      </div>
+    </footer>
+  )
+}
