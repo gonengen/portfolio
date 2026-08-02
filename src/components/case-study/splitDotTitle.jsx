@@ -16,13 +16,13 @@ export function DotTitle({ text, className = '' }) {
   const { company, rest } = splitDotTitle(text)
 
   if (!rest) {
-    return <span className={className}>{company}</span>
+    return <span className={`text-primary ${className}`.trim()}>{company}</span>
   }
 
   return (
-    <>
-      <span className="text-secondary">{company}</span>
-      <span className="text-primary">{rest}</span>
-    </>
+    <span className={`text-primary ${className}`.trim()}>
+      {company}
+      {rest}
+    </span>
   )
 }

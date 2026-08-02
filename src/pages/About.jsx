@@ -42,11 +42,7 @@ export default function About() {
       <PageHero
         headingClassName="max-w-6xl"
         segments={[
-          { text: 'Great work happens ', tone: 'primary' },
-          {
-            text: 'when talented people enjoy working together.',
-            tone: 'secondary',
-          },
+          { text: 'Great work happens when talented people enjoy working together.' },
         ]}
       />
 

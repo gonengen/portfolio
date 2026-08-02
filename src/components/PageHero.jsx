@@ -6,13 +6,10 @@ export default function PageHero({
 }) {
   return (
     <section className={`flex w-full flex-col items-start ${className}`.trim()}>
-      <h1 className={`w-full text-balance ${headingClassName}`.trim()}>
+      <h1 className={`w-full text-balance text-primary ${headingClassName}`.trim()}>
         {children ??
           segments?.map((segment) => (
-            <span
-              key={segment.text}
-              className={segment.tone === 'secondary' ? 'text-secondary' : 'text-primary'}
-            >
+            <span key={segment.text} className="text-primary">
               {segment.text}
             </span>
           ))}

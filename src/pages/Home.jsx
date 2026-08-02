@@ -85,13 +85,8 @@ export default function Home() {
   return (
     <PageShell>
       <PageHero headingClassName="max-w-6xl">
-        <span className="text-secondary">
-          Hi, I&apos;m Gonen, an AI advisor, UX expert and design lead.{' '}
-        </span>
-        <span className="text-primary">
-          I{'\u00A0'}help product teams find their{' '}
-          <span className="whitespace-nowrap">A-ha</span> moment.
-        </span>
+        Hi, I&apos;m Gonen, an AI advisor, UX expert and design lead. I{'\u00A0'}help product
+        teams find their <span className="whitespace-nowrap">A-ha</span> moment.
       </PageHero>
 
       <section className="flex w-full flex-col gap-[var(--spacing-section)]">
