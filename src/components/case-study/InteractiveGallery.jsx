@@ -4,8 +4,9 @@ import removeIcon from '@assets/Icons/Property 1=remove.svg'
 import arrowLeftIcon from '@assets/Icons/Property 1=arrow_left_alt.svg'
 import arrowRightIcon from '@assets/Icons/Property 1=arrow_right_alt.svg'
 
-const FADE_MS = 500
+const SLIDE_MS = 500
 const TRANSITION_EASE = 'cubic-bezier(0.4, 0, 0.2, 1)'
+const DRAG_THRESHOLD = 48
 
 function GalleryPanel({
   tabs,
@@ -18,6 +19,61 @@ function GalleryPanel({
   isExpanded,
 }) {
   const activeTab = tabs[activeIndex]
+  const viewportRef = useRef(null)
+  const dragStartXRef = useRef(0)
+  const dragPointerIdRef = useRef(null)
+  const [dragOffset, setDragOffset] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+
+  const finishDrag = useCallback(
+    (clientX) => {
+      const delta = clientX - dragStartXRef.current
+
+      setIsDragging(false)
+      setDragOffset(0)
+      dragPointerIdRef.current = null
+
+      if (Math.abs(delta) < DRAG_THRESHOLD) return
+
+      if (delta < 0) {
+        onNext()
+      } else {
+        onPrevious()
+      }
+    },
+    [onNext, onPrevious],
+  )
+
+  const handlePointerDown = (event) => {
+    if (event.button !== 0) return
+
+    dragStartXRef.current = event.clientX
+    dragPointerIdRef.current = event.pointerId
+    setIsDragging(true)
+    setDragOffset(0)
+    viewportRef.current?.setPointerCapture(event.pointerId)
+  }
+
+  const handlePointerMove = (event) => {
+    if (!isDragging || event.pointerId !== dragPointerIdRef.current) return
+
+    setDragOffset(event.clientX - dragStartXRef.current)
+  }
+
+  const handlePointerUp = (event) => {
+    if (!isDragging || event.pointerId !== dragPointerIdRef.current) return
+
+    viewportRef.current?.releasePointerCapture(event.pointerId)
+    finishDrag(event.clientX)
+  }
+
+  const handlePointerCancel = (event) => {
+    if (event.pointerId !== dragPointerIdRef.current) return
+
+    setIsDragging(false)
+    setDragOffset(0)
+    dragPointerIdRef.current = null
+  }
 
   return (
     <>
@@ -79,32 +135,39 @@ function GalleryPanel({
 
       <div className="relative w-full overflow-hidden bg-[#111214]">
         <div
+          ref={viewportRef}
           role="tabpanel"
           id={`gallery-panel-${activeTab?.id ?? 'slide'}`}
           aria-labelledby={`gallery-tab-${activeTab?.id ?? 'slide'}`}
-          className={`relative w-full overflow-hidden ${
+          className={`relative w-full touch-none select-none overflow-hidden ${
             isExpanded ? 'aspect-auto min-h-[60vh]' : 'aspect-[16/10] max-md:aspect-[4/3]'
-          }`}
+          } ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerCancel}
         >
-          {tabs.map((tab, index) => (
-            <img
-              key={tab.id}
-              src={tab.image}
-              alt={tab.alt || `${tab.label} view`}
-              className={`absolute inset-0 size-full object-cover object-top motion-reduce:transition-none ${
-                isExpanded ? 'object-contain bg-[#111214]' : ''
-              }`}
-              style={{
-                opacity: index === activeIndex ? 1 : 0,
-                transitionProperty: 'opacity',
-                transitionDuration: `${FADE_MS}ms`,
-                transitionTimingFunction: TRANSITION_EASE,
-                zIndex: index === activeIndex ? 2 : 1,
-                pointerEvents: index === activeIndex ? 'auto' : 'none',
-              }}
-              loading={index === 0 ? 'eager' : 'lazy'}
-            />
-          ))}
+          <div
+            className="flex h-full w-full motion-reduce:transition-none"
+            style={{
+              transform: `translateX(calc(-${activeIndex * 100}% + ${dragOffset}px))`,
+              transition: isDragging ? 'none' : `transform ${SLIDE_MS}ms ${TRANSITION_EASE}`,
+            }}
+          >
+            {tabs.map((tab, index) => (
+              <div key={tab.id} className="h-full w-full shrink-0">
+                <img
+                  src={tab.image}
+                  alt={tab.alt || `${tab.label} view`}
+                  draggable={false}
+                  className={`size-full object-cover object-top ${
+                    isExpanded ? 'bg-[#111214] object-contain' : ''
+                  }`}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
+            ))}
+          </div>
 
           <button
             type="button"
@@ -112,7 +175,7 @@ function GalleryPanel({
               event.stopPropagation()
               onPrevious()
             }}
-            className="absolute left-3 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 backdrop-blur-sm transition-all duration-300 hover:bg-black/70 md:left-4 md:size-11"
+            className="absolute left-3 top-1/2 z-10 flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-black/50 backdrop-blur-sm transition-all duration-300 hover:bg-black/70 md:left-4 md:size-11"
             aria-label={`Previous slide: ${tabs[(activeIndex - 1 + tabs.length) % tabs.length]?.label}`}
           >
             <img src={arrowLeftIcon} alt="" aria-hidden="true" className="size-5 invert" />
@@ -124,7 +187,7 @@ function GalleryPanel({
               event.stopPropagation()
               onNext()
             }}
-            className="absolute right-3 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 backdrop-blur-sm transition-all duration-300 hover:bg-black/70 md:right-4 md:size-11"
+            className="absolute right-3 top-1/2 z-10 flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-black/50 backdrop-blur-sm transition-all duration-300 hover:bg-black/70 md:right-4 md:size-11"
             aria-label={`Next slide: ${tabs[(activeIndex + 1) % tabs.length]?.label}`}
           >
             <img src={arrowRightIcon} alt="" aria-hidden="true" className="size-5 invert" />
@@ -147,7 +210,7 @@ function GalleryPanel({
                     event.stopPropagation()
                     onSelectIndex(index)
                   }}
-                  className={`rounded-full transition-all duration-300 ${
+                  className={`cursor-pointer rounded-full transition-all duration-300 ${
                     isActive
                       ? 'size-2.5 bg-white shadow-[0_0_0_2px_rgba(255,255,255,0.25)]'
                       : 'size-2 bg-white/40 hover:bg-white/70'
