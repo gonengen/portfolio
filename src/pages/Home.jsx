@@ -88,7 +88,7 @@ export default function Home() {
         An AI Expert &amp; Design Lead, helping product teams find their aha moment.
       </PageHero>
 
-      <section id="work" className="flex w-full flex-col gap-[var(--spacing-section)] scroll-mt-24">
+      <section className="flex w-full flex-col gap-[var(--spacing-section)]">
         {caseStudies.map((study) => (
           <CaseStudyCard key={study.id} {...study} />
         ))}
