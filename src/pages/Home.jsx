@@ -7,13 +7,6 @@ import easyImage from '@assets/home_page/Case Name=Easy, Location=Case Study Pag
 
 const caseStudies = [
   {
-    id: 'secure-stay',
-    title: 'Secure Stay',
-    subtitle: 'AI Governance · ↓75% MTTR',
-    tags: 'Enterprise SaaS · AI Agents · Cyber Security · AI Governance',
-    image: secureStayImage,
-  },
-  {
     id: 'robonote',
     title: 'Robonote',
     subtitle: 'Conversation Intelligence · ↓8% Churn',
@@ -26,6 +19,13 @@ const caseStudies = [
     subtitle: 'Consumer App · +6% User Adoption',
     tags: 'B2C · Mobile App · Marketplace · Growth',
     image: easyImage,
+  },
+  {
+    id: 'secure-stay',
+    title: 'Secure Stay',
+    subtitle: 'AI Governance · ↓75% MTTR',
+    tags: 'Enterprise SaaS · AI Agents · Cyber Security · AI Governance',
+    image: secureStayImage,
   },
 ]
 
