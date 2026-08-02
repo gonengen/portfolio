@@ -6,7 +6,6 @@ import gallerySummaryImage from '@assets/secure_stay/securestay-gallery01.png'
 import galleryLogicImage from '@assets/secure_stay/securestay-gallery02.png'
 import galleryPredictiveImage from '@assets/secure_stay/securestay-gallery03.png'
 import galleryForensicsImage from '@assets/secure_stay/securestay-gallery04.png'
-import constitutionImage from '@assets/secure_stay/securestay-gallery02.png'
 import reasoningFirstIcon from '@assets/secure_stay/Reasoning first.svg'
 import effortlessOverrideIcon from '@assets/secure_stay/Effortless override.svg'
 import governanceVisibleIcon from '@assets/secure_stay/Governance visible.svg'
@@ -26,20 +25,18 @@ const userResearchParagraphs = splitParagraphs(
 
 export const secureStayData = {
   title: 'Secure Stay · Building Trust Between Humans and Agents - 75% Faster MTTR',
-  context:
-    'Context. Secure Stay evolved from a traditional security platform into an autonomous AI system, with specialized agents monitoring, investigating, and responding to incidents across more than 400 hotels. That shift created a new problem no one had designed for yet: how do you help an organization confidently govern decisions an AI is making on its own?',
   heroImage,
   heroImageAlt: 'Secure Stay fleet trust overview',
   sections: [
     {
       type: 'text',
       highlight:
-        'Overview. Secure Stay evolved from a traditional security platform into an autonomous AI system, with specialized agents monitoring, investigating, and responding to incidents across more than 400 hotels. That shift created a new problem no one had designed for yet: how do you help an organization confidently govern decisions an AI is making on its own?',
+        'Context. Secure Stay evolved from a traditional security platform into an autonomous AI system, with specialized agents monitoring, investigating, and responding to incidents across more than 400 hotels. That shift created a new problem no one had designed for yet: how do you help an organization confidently govern decisions an AI is making on its own?',
     },
     {
       type: 'text',
       highlight:
-        'Problem Statement. I set out to design the governance layer that let security teams understand autonomous decisions, weigh their impact, and supervise AI operating across a global enterprise — with confidence, not just visibility.',
+        'Challenge. I set out to design the governance layer that let security teams understand autonomous decisions, weigh their impact, and supervise AI operating across a global enterprise — with confidence, not just visibility.',
     },
     {
       type: 'text',
@@ -153,7 +150,7 @@ export const secureStayData = {
     {
       type: 'media',
       variant: 'wide',
-      images: [{ src: constitutionImage, alt: 'Constitutional governance layer' }],
+      images: [{ src: galleryLogicImage, alt: 'Secure Stay logic and reasoning view' }],
       caption:
         'Thirteen constitutional rules covering activation history and override behavior, built as a living artifact that anchors both daily decisions and executive accountability.',
     },
