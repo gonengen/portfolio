@@ -1,4 +1,4 @@
-import heroImage from '@assets/robonote/robonote-solution-dashboard-ceo-wide.png'
+import heroImage from '@assets/robonote/robonote-solution-dashboard-team-lead-wide.png'
 import roleViewImage from '@assets/robonote/robonote-solution-dashboard-overview-wide.png'
 import researchImage from '@assets/robonote/robonote-solution-dashboard-vp-wide.png'
 import principlesImage from '@assets/robonote/robonote-solution-dashboard-decision-level-wide.png'
@@ -32,15 +32,13 @@ const userResearchParagraphs = splitParagraphs(
 
 export const robonoteData = {
   title: 'Robonote · Rebuilding the entry-point cut customer churn by 8%',
-  context:
-    "Context. Robonote turned millions of customer conversations into performance analytics for sales, support, operations, and compliance teams. Customers loved it in the demo. Then they went home, opened the dashboard on their own, and didn't know where to look first.",
   heroImage,
-  heroImageAlt: 'Robonote CEO dashboard hero',
+  heroImageAlt: 'Robonote team lead dashboard hero',
   sections: [
     {
       type: 'text',
       highlight:
-        "Overview. Robonote turned millions of customer conversations into performance analytics for sales, support, operations, and compliance teams. Customers loved it in the demo — then struggled to find value on their own after onboarding.",
+        "Context. Robonote turned millions of customer conversations into performance analytics for sales, support, operations, and compliance teams. Customers loved it in the demo — then struggled to find value on their own after onboarding.",
     },
     {
       type: 'media',

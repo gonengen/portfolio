@@ -28,15 +28,13 @@ const userResearchParagraphs = splitParagraphs(
 
 export const easyData = {
   title: 'Easy App · From an Ignored Feature to a Key Driver, 6% User Adoption',
-  context:
-    'Context. Easy helped millions of users discover local businesses, but its discounts never became a real product. Offers sat on the platform, visible to everyone, claimed by almost no one. I saw an opportunity to turn scattered discounts into a trusted coupon experience.',
   heroImage,
   heroImageAlt: 'Easy coupon app overview',
   sections: [
     {
       type: 'text',
       highlight:
-        'Overview. Easy helped millions of users discover local businesses, but its discounts never became a real product. Offers sat on the platform, visible to everyone, claimed by almost no one.',
+        'Context. Easy helped millions of users discover local businesses, but its discounts never became a real product. Offers sat on the platform, visible to everyone, claimed by almost no one.',
     },
     {
       type: 'media',

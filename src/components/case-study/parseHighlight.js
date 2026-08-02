@@ -1,4 +1,8 @@
-export function parseHighlight(text) {
+export function parseHighlight(text = '') {
+  if (!text) {
+    return { label: '', body: '' }
+  }
+
   const dotIndex = text.indexOf('.')
   if (dotIndex === -1) {
     return { label: '', body: text }
