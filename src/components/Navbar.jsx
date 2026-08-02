@@ -9,6 +9,10 @@ function scrollToFooter() {
   document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })
 }
 
+function scrollToWork() {
+  document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })
+}
+
 export default function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
@@ -24,6 +28,15 @@ export default function Navbar() {
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleWorkClick = () => {
+    if (location.pathname === '/') {
+      scrollToWork()
+      return
+    }
+
+    navigate('/#work')
+  }
 
   const handleContactClick = () => {
     const hasFooterOnPage = ['/', '/about'].includes(location.pathname)
@@ -58,7 +71,7 @@ export default function Navbar() {
           />
         </Link>
         <nav className="flex items-center gap-8">
-          <Button to="/about">About</Button>
+          <Button onClick={handleWorkClick}>Work</Button>
           <Button
             onClick={handleContactClick}
             rightIcon={<img src={callMadeIcon} alt="" aria-hidden="true" />}

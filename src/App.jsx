@@ -22,6 +22,10 @@ function ScrollToHash() {
     if (hash === '#footer') {
       document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })
     }
+
+    if (hash === '#work') {
+      document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })
+    }
   }, [hash])
 
   return null

@@ -89,7 +89,7 @@ export default function Home() {
         teams find their <span className="whitespace-nowrap">A-ha</span> moment.
       </PageHero>
 
-      <section className="flex w-full flex-col gap-[var(--spacing-section)]">
+      <section id="work" className="flex w-full flex-col gap-[var(--spacing-section)] scroll-mt-24">
         {caseStudies.map((study) => (
           <CaseStudyCard key={study.id} {...study} />
         ))}
