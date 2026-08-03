@@ -105,6 +105,7 @@ export const secureStayData = {
     },
     {
       type: 'gallery',
+      hideTabs: true,
       tabs: [
         {
           id: 'summary',

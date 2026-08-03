@@ -17,6 +17,7 @@ function GalleryPanel({
   onExpand,
   onClose,
   isExpanded,
+  hideTabs = false,
 }) {
   const activeTab = tabs[activeIndex]
   const viewportRef = useRef(null)
@@ -78,38 +79,42 @@ function GalleryPanel({
   return (
     <>
       <header className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3 md:px-6">
-        <nav
-          className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto"
-          aria-label="Gallery views"
-          role="tablist"
-        >
-          {tabs.map((tab, index) => {
-            const isActive = index === activeIndex
+        {!hideTabs ? (
+          <nav
+            className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto"
+            aria-label="Gallery views"
+            role="tablist"
+          >
+            {tabs.map((tab, index) => {
+              const isActive = index === activeIndex
 
-            return (
-              <button
-                key={tab.id}
-                id={`gallery-tab-${tab.id}`}
-                type="button"
-                role="tab"
-                onClick={() => onSelectIndex(index)}
-                className={`relative shrink-0 px-3 py-2 text-sm font-medium leading-none transition-colors duration-300 md:text-base ${
-                  isActive ? 'text-white' : 'text-[#94949e] hover:text-[#c7c8ca]'
-                }`}
-                aria-selected={isActive}
-                aria-controls={`gallery-panel-${tab.id}`}
-              >
-                {tab.label}
-                <span
-                  className={`absolute inset-x-3 -bottom-3 h-0.5 rounded-full bg-white transition-opacity duration-300 ${
-                    isActive ? 'opacity-100' : 'opacity-0'
+              return (
+                <button
+                  key={tab.id}
+                  id={`gallery-tab-${tab.id}`}
+                  type="button"
+                  role="tab"
+                  onClick={() => onSelectIndex(index)}
+                  className={`relative shrink-0 px-3 py-2 text-sm font-medium leading-none transition-colors duration-300 md:text-base ${
+                    isActive ? 'text-white' : 'text-[#94949e] hover:text-[#c7c8ca]'
                   }`}
-                  aria-hidden="true"
-                />
-              </button>
-            )
-          })}
-        </nav>
+                  aria-selected={isActive}
+                  aria-controls={`gallery-panel-${tab.id}`}
+                >
+                  {tab.label}
+                  <span
+                    className={`absolute inset-x-3 -bottom-3 h-0.5 rounded-full bg-white transition-opacity duration-300 ${
+                      isActive ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    aria-hidden="true"
+                  />
+                </button>
+              )
+            })}
+          </nav>
+        ) : (
+          <div className="min-w-0 flex-1" aria-hidden="true" />
+        )}
 
         <div className="flex shrink-0 items-center gap-2">
           {!isExpanded && (
@@ -136,9 +141,9 @@ function GalleryPanel({
       <div className="relative w-full overflow-hidden bg-[#111214]">
         <div
           ref={viewportRef}
-          role="tabpanel"
-          id={`gallery-panel-${activeTab?.id ?? 'slide'}`}
-          aria-labelledby={`gallery-tab-${activeTab?.id ?? 'slide'}`}
+          role="group"
+          aria-roledescription="slide"
+          aria-label={`${activeTab?.label ?? 'Gallery'} view`}
           className={`relative w-full touch-none select-none overflow-hidden ${
             isExpanded ? 'aspect-auto min-h-[60vh]' : 'aspect-[16/10] max-md:aspect-[4/3]'
           } ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
@@ -227,7 +232,7 @@ function GalleryPanel({
   )
 }
 
-export default function InteractiveGallery({ tabs = [], caption }) {
+export default function InteractiveGallery({ tabs = [], caption, hideTabs = true }) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isExpanded, setIsExpanded] = useState(false)
   const sectionRef = useRef(null)
@@ -319,6 +324,7 @@ export default function InteractiveGallery({ tabs = [], caption }) {
     onNext: goToNext,
     onExpand: () => setIsExpanded(true),
     onClose: handleClose,
+    hideTabs,
   }
 
   return (

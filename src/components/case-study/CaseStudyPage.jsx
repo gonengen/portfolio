@@ -34,6 +34,7 @@ function renderSection(section, index) {
           key={index}
           tabs={section.tabs}
           caption={section.caption}
+          hideTabs={section.hideTabs}
         />
       )
     case 'principles':
