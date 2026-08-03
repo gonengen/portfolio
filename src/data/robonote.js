@@ -1,4 +1,4 @@
-import heroImage from '@assets/robonote/robonote-solution-dashboard-team-lead-wide.png'
+import heroImage from '@assets/robonote/Case Name=Robonote, Location=case atudy page.png'
 import roleViewImage from '@assets/robonote/robonote-solution-dashboard-overview-wide.png'
 import researchImage from '@assets/robonote/robonote-solution-dashboard-vp-wide.png'
 import principlesImage from '@assets/robonote/robonote-solution-dashboard-decision-level-wide.png'

@@ -1,4 +1,4 @@
-import heroImage from '@assets/easy_coupons /easy-Coupons-overview-wide.png'
+import heroImage from '@assets/easy_coupons /Case Name=Easy, Location=case atudy page.png'
 import flowImage from '@assets/easy_coupons /easy-Coupons-flow-wide.png'
 import churnImage from '@assets/easy_coupons /easy-Coupons-churn-map-wide.png'
 import userFlowImage from '@assets/easy_coupons /easy-Coupons-user-flow-wide.png'

@@ -1,9 +1,9 @@
 import PageShell from '../components/PageShell'
 import PageHero from '../components/PageHero'
 import CaseStudyCard from '../components/CaseStudyCard'
-import secureStayImage from '@assets/home_page/Case Name=Secure Stay, Location=Case Study Page/_.png'
-import robonoteImage from '@assets/home_page/Case Name=Robonote, Location=Case Study Page/_.png'
-import easyImage from '@assets/home_page/Case Name=Easy, Location=Case Study Page/_.png'
+import secureStayImage from '@assets/secure_stay/Case Name=Secure Stay, Location=case atudy page.png'
+import robonoteImage from '@assets/robonote/Case Name=Robonote, Location=case atudy page.png'
+import easyImage from '@assets/easy_coupons /Case Name=Easy, Location=case atudy page.png'
 
 const caseStudies = [
   {

@@ -1,4 +1,4 @@
-import heroImage from '@assets/secure_stay/securestay-sovereign-overview-wide.png'
+import heroImage from '@assets/secure_stay/Case Name=Secure Stay, Location=case atudy page.png'
 import governanceMapImage from '@assets/secure_stay/securestay-global-fleet-performance-wide.png'
 import auditTimelineImage from '@assets/secure_stay/securestay-global-fleet-performance-log-wide.png'
 import agentProfilesImage from '@assets/secure_stay/securestay-contextual-intelligence-constitution-wide.png'
