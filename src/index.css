@@ -50,5 +50,6 @@
 
   .text-display-s {
     font-family: var(--font-display);
+    @apply text-[48px] font-thin leading-[1.6] max-lg:text-4xl max-md:text-3xl;
   }
 }
