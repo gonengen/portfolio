@@ -47,6 +47,7 @@ function GalleryPanel({
 
   const handlePointerDown = (event) => {
     if (event.button !== 0) return
+    if (event.target.closest('button')) return
 
     dragStartXRef.current = event.clientX
     dragPointerIdRef.current = event.pointerId
@@ -78,8 +79,8 @@ function GalleryPanel({
 
   return (
     <>
-      <header className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3 md:px-6">
-        {!hideTabs ? (
+      {!hideTabs && (
+        <header className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3 md:px-6">
           <nav
             className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto"
             aria-label="Gallery views"
@@ -112,33 +113,31 @@ function GalleryPanel({
               )
             })}
           </nav>
-        ) : (
-          <div className="min-w-0 flex-1" aria-hidden="true" />
-        )}
 
-        <div className="flex shrink-0 items-center gap-2">
-          {!isExpanded && (
+          <div className="flex shrink-0 items-center gap-2">
+            {!isExpanded && (
+              <button
+                type="button"
+                onClick={onExpand}
+                className="flex size-8 items-center justify-center rounded-full transition-opacity hover:opacity-80"
+                aria-label="Expand gallery"
+              >
+                <img src={addIcon} alt="" aria-hidden="true" className="size-5 invert" />
+              </button>
+            )}
             <button
               type="button"
-              onClick={onExpand}
+              onClick={onClose}
               className="flex size-8 items-center justify-center rounded-full transition-opacity hover:opacity-80"
-              aria-label="Expand gallery"
+              aria-label={isExpanded ? 'Close expanded gallery' : 'Reset gallery'}
             >
-              <img src={addIcon} alt="" aria-hidden="true" className="size-5 invert" />
+              <img src={removeIcon} alt="" aria-hidden="true" className="size-5 invert" />
             </button>
-          )}
-          <button
-            type="button"
-            onClick={onClose}
-            className="flex size-8 items-center justify-center rounded-full transition-opacity hover:opacity-80"
-            aria-label={isExpanded ? 'Close expanded gallery' : 'Reset gallery'}
-          >
-            <img src={removeIcon} alt="" aria-hidden="true" className="size-5 invert" />
-          </button>
-        </div>
-      </header>
+          </div>
+        </header>
+      )}
 
-      <div className="relative w-full overflow-hidden bg-[#111214]">
+      <div className={`relative w-full overflow-hidden ${hideTabs ? '' : 'bg-[#111214]'}`}>
         <div
           ref={viewportRef}
           role="group"
@@ -176,10 +175,8 @@ function GalleryPanel({
 
           <button
             type="button"
-            onClick={(event) => {
-              event.stopPropagation()
-              onPrevious()
-            }}
+            onPointerDown={(event) => event.stopPropagation()}
+            onClick={() => onPrevious()}
             className="absolute left-3 top-1/2 z-10 flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-black/50 backdrop-blur-sm transition-all duration-300 hover:bg-black/70 md:left-4 md:size-11"
             aria-label={`Previous slide: ${tabs[(activeIndex - 1 + tabs.length) % tabs.length]?.label}`}
           >
@@ -188,10 +185,8 @@ function GalleryPanel({
 
           <button
             type="button"
-            onClick={(event) => {
-              event.stopPropagation()
-              onNext()
-            }}
+            onPointerDown={(event) => event.stopPropagation()}
+            onClick={() => onNext()}
             className="absolute right-3 top-1/2 z-10 flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-black/50 backdrop-blur-sm transition-all duration-300 hover:bg-black/70 md:right-4 md:size-11"
             aria-label={`Next slide: ${tabs[(activeIndex + 1) % tabs.length]?.label}`}
           >
@@ -211,10 +206,8 @@ function GalleryPanel({
                   key={tab.id}
                   type="button"
                   role="tab"
-                  onClick={(event) => {
-                    event.stopPropagation()
-                    onSelectIndex(index)
-                  }}
+                  onPointerDown={(event) => event.stopPropagation()}
+                  onClick={() => onSelectIndex(index)}
                   className={`cursor-pointer rounded-full transition-all duration-300 ${
                     isActive
                       ? 'size-2.5 bg-white shadow-[0_0_0_2px_rgba(255,255,255,0.25)]'
@@ -338,7 +331,13 @@ export default function InteractiveGallery({ tabs = [], caption, hideTabs = true
         Showing slide {activeIndex + 1} of {tabs.length}: {activeTab.label}
       </p>
 
-      <div className="overflow-hidden rounded-2xl bg-[#1a1c1e] shadow-[0_24px_48px_rgba(0,0,0,0.12)]">
+      <div
+        className={`overflow-hidden rounded-2xl ${
+          hideTabs
+            ? 'shadow-[0_24px_48px_rgba(0,0,0,0.12)]'
+            : 'bg-[#1a1c1e] shadow-[0_24px_48px_rgba(0,0,0,0.12)]'
+        }`}
+      >
         <GalleryPanel {...panelProps} isExpanded={false} />
       </div>
 
