@@ -1,0 +1,45 @@
+---
+description: Default workflow — always deploy unless user opts out
+alwaysApply: true
+---
+
+# Portfolio workflow
+
+## Deploy default
+
+After completing code changes, **always commit and push to `main`** so Vercel deploys — unless the user explicitly says not to (e.g. "בלי deploy", "רק מקומי", "אל תעלה").
+
+When deploying:
+- Run `git add` for relevant files only
+- Write a short, accurate commit message
+- Push to origin
+- Confirm commit hash and that push succeeded
+
+Question-only or review-only tasks: do **not** deploy.
+
+## Task prompt template
+
+User prefers focused requests. When unclear, infer minimally — don't ask many questions.
+
+```markdown
+## משימה
+[משפט אחד]
+
+## איפה
+[עמוד / קובץ / @path / Figma node]
+
+## שינוי
+- [רשימה מדויקת]
+
+## אל תיגע ב
+[optional]
+
+## deploy
+ברירת מחדל: כן (commit + push) — רק "לא" אם המשתמש ביקש במפורש
+```
+
+## Efficiency
+
+- Minimize diff scope
+- Match existing code conventions
+- Batch independent reads; avoid broad "audit entire site" unless asked
