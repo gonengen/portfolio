@@ -1,3 +1,16 @@
+const CROSS_SEPARATOR = ' × '
+
+export function splitCrossTitle(text) {
+  const parts = text.split(CROSS_SEPARATOR)
+
+  if (parts.length === 1) {
+    return { parts: [text], hasSeparator: false }
+  }
+
+  return { parts, hasSeparator: true }
+}
+
+/** @deprecated Use CrossTitle — titles now use × separators */
 export function splitDotTitle(text) {
   const separator = ' · '
   const separatorIndex = text.indexOf(separator)
@@ -12,17 +25,26 @@ export function splitDotTitle(text) {
   }
 }
 
-export function DotTitle({ text, className = '' }) {
-  const { company, rest } = splitDotTitle(text)
+export function CrossTitle({ text, className = '' }) {
+  const { parts, hasSeparator } = splitCrossTitle(text)
 
-  if (!rest) {
-    return <span className={`text-primary ${className}`.trim()}>{company}</span>
+  if (!hasSeparator) {
+    return <span className={`text-primary ${className}`.trim()}>{text}</span>
   }
 
   return (
-    <span className={`text-primary ${className}`.trim()}>
-      {company}
-      {rest}
+    <span className={className}>
+      {parts.map((part, index) => (
+        <span key={`${part}-${index}`}>
+          {index > 0 && <span className="text-secondary"> × </span>}
+          <span className="text-primary">{part}</span>
+        </span>
+      ))}
     </span>
   )
+}
+
+/** @deprecated Use CrossTitle */
+export function DotTitle({ text, className = '' }) {
+  return <CrossTitle text={text.replace(/ · /g, CROSS_SEPARATOR)} className={className} />
 }

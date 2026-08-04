@@ -24,7 +24,7 @@ const userResearchParagraphs = splitParagraphs(
 )
 
 export const secureStayData = {
-  title: 'Secure Stay · Building Trust Between Humans and Agents - 75% Faster MTTR',
+  title: 'Secure Stay × Building Trust Between Humans and Agents - 75% Faster MTTR',
   heroImage,
   heroImageAlt: 'Secure Stay fleet trust overview',
   sections: [

@@ -85,7 +85,7 @@ export default function Home() {
   return (
     <PageShell>
       <PageHero headingClassName="max-w-6xl">
-        An AI Expert &amp; Design Lead, helping product teams find their aha moment.
+        AI expert × design lead × helping product teams find their aha moment
       </PageHero>
 
       <section className="flex w-full flex-col gap-[var(--spacing-section)]">

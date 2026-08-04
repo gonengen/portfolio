@@ -27,7 +27,7 @@ const userResearchParagraphs = splitParagraphs(
 )
 
 export const easyData = {
-  title: 'Easy App · From an Ignored Feature to a Key Driver, 6% User Adoption',
+  title: 'Easy App × From an Ignored Feature to a Key Driver, 6% User Adoption',
   heroImage,
   heroImageAlt: 'Easy coupon app overview',
   sections: [

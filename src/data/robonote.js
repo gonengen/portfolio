@@ -31,7 +31,7 @@ const userResearchParagraphs = splitParagraphs(
 )
 
 export const robonoteData = {
-  title: 'Robonote · Rebuilding the entry-point cut customer churn by 8%',
+  title: 'Robonote × Rebuilding the entry-point cut customer churn by 8%',
   heroImage,
   heroImageAlt: 'Robonote team lead dashboard hero',
   sections: [

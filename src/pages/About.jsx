@@ -39,12 +39,9 @@ function InsightRow({ emoji, text }) {
 export default function About() {
   return (
     <PageShell>
-      <PageHero
-        headingClassName="max-w-6xl"
-        segments={[
-          { text: 'Great work happens when talented people enjoy working together.' },
-        ]}
-      />
+      <PageHero headingClassName="max-w-6xl">
+        I design × the way I play × the way I build
+      </PageHero>
 
       <section className="flex w-full items-center justify-center gap-[var(--spacing-element-x)] opacity-90 max-md:flex-col">
         <div className="w-[271px] shrink-0 overflow-hidden rounded-xl max-md:w-full">

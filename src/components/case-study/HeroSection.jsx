@@ -1,4 +1,4 @@
-import { DotTitle } from './splitDotTitle'
+import { CrossTitle } from './splitDotTitle'
 import { parseHighlight } from './parseHighlight'
 
 export default function HeroSection({ title, context, heroImage, heroImageAlt }) {
@@ -7,8 +7,8 @@ export default function HeroSection({ title, context, heroImage, heroImageAlt })
   return (
     <section className="flex w-full flex-col gap-[var(--spacing-stack)]">
       <div className="flex w-full flex-col gap-[var(--spacing-element-x)]">
-        <h1 className="w-full text-primary">
-          <DotTitle text={title} />
+        <h1 className="w-full">
+          <CrossTitle text={title} />
         </h1>
 
         {context && (
