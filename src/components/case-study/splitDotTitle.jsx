@@ -1,3 +1,5 @@
+import { Fragment } from 'react'
+
 const CROSS_SEPARATOR = ' × '
 
 export function splitCrossTitle(text) {
@@ -33,14 +35,14 @@ export function CrossTitle({ text, className = '' }) {
   }
 
   return (
-    <span className={className}>
+    <>
       {parts.map((part, index) => (
-        <span key={`${part}-${index}`}>
+        <Fragment key={`${part}-${index}`}>
           {index > 0 && <span className="text-secondary"> × </span>}
           <span className="text-primary">{part}</span>
-        </span>
+        </Fragment>
       ))}
-    </span>
+    </>
   )
 }
 

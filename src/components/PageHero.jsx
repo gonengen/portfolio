@@ -7,7 +7,7 @@ export default function PageHero({
 }) {
   return (
     <section className={`flex w-full flex-col items-start ${className}`.trim()}>
-      <h1 className={`w-full text-balance ${headingClassName}`.trim()}>
+      <h1 className={`w-full ${headingClassName}`.trim()}>
         <CrossTitle text={children} />
       </h1>
     </section>

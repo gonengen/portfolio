@@ -40,7 +40,7 @@ export default function About() {
   return (
     <PageShell>
       <PageHero headingClassName="max-w-6xl">
-        I design × the way I play × the way I build
+        {`I design × the way I\u00A0play × the way I build`}
       </PageHero>
 
       <section className="flex w-full items-center justify-center gap-[var(--spacing-element-x)] opacity-90 max-md:flex-col">
