@@ -156,29 +156,31 @@ export default function About() {
         </section>
       </div>
 
-      <AboutInsightStack insights={insights} />
+      <section className="flex flex-col gap-[var(--spacing-stack)]">
+        <AboutInsightStack insights={insights} />
 
-      <section className="mx-auto flex w-full max-w-[640px] flex-col gap-[var(--spacing-element-x)] sm:flex-row">
-        <Button
-          variant="split"
-          href={resumePdf}
-          external
-          leftIcon={<img src={resumeIcon} alt="" aria-hidden="true" />}
-          rightIcon={<img src={downloadIcon} alt="" aria-hidden="true" />}
-          className="flex-1"
-        >
-          Download resume
-        </Button>
-        <Button
-          variant="split"
-          href="https://www.linkedin.com/in/gonen-maatuk-5b2ab8380/"
-          external
-          leftIcon={<img src={linkedinIcon} alt="" aria-hidden="true" />}
-          rightIcon={<img src={callMadeIcon} alt="" aria-hidden="true" />}
-          className="flex-1"
-        >
-          Let&apos;s chat
-        </Button>
+        <section className="relative z-10 mx-auto flex w-full max-w-[640px] flex-col gap-[var(--spacing-element-x)] bg-surface sm:flex-row">
+          <Button
+            variant="split"
+            href={resumePdf}
+            external
+            leftIcon={<img src={resumeIcon} alt="" aria-hidden="true" />}
+            rightIcon={<img src={downloadIcon} alt="" aria-hidden="true" />}
+            className="flex-1"
+          >
+            Download resume
+          </Button>
+          <Button
+            variant="split"
+            href="https://www.linkedin.com/in/gonen-maatuk-5b2ab8380/"
+            external
+            leftIcon={<img src={linkedinIcon} alt="" aria-hidden="true" />}
+            rightIcon={<img src={callMadeIcon} alt="" aria-hidden="true" />}
+            className="flex-1"
+          >
+            Let&apos;s chat
+          </Button>
+        </section>
       </section>
     </PageShell>
   )

@@ -26,35 +26,38 @@ function getStickyTop() {
 
 export default function AboutInsightStack({ insights }) {
   const containerRef = useRef(null)
+  const endSpacerRef = useRef(null)
   const cardRefs = useRef([])
   const innerRefs = useRef([])
 
   useEffect(() => {
     const container = containerRef.current
+    const endSpacer = endSpacerRef.current
     const cards = cardRefs.current.filter(Boolean)
     const inners = innerRefs.current.filter(Boolean)
 
-    if (!container || cards.length === 0) return undefined
+    if (!container || !endSpacer || cards.length === 0) return undefined
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     const updateLayout = () => {
       const stickyTop = getStickyTop()
       const innerHeight = inners[0]?.offsetHeight ?? cards[0].clientHeight
-      const rowHeight = innerHeight + STACK_STEP
 
-      container.style.setProperty('--stack-sticky-top', `${stickyTop}px`)
       container.style.setProperty('--cards-count', String(cards.length))
-      container.style.setProperty('--card-height', `${rowHeight}px`)
+      container.style.setProperty('--card-height', `${innerHeight}px`)
 
       cards.forEach((card, index) => {
         card.style.top = `${stickyTop}px`
         card.style.paddingTop = `${index * STACK_STEP}px`
+        card.style.zIndex = String(index + 1)
       })
 
-      const gap = 40
-      const trailingSpace = Math.max(0, (cards.length - 1) * (rowHeight + gap))
-      container.style.marginBottom = `-${trailingSpace}px`
+      const releaseScroll = Math.max(
+        stickyTop,
+        window.innerHeight - stickyTop - innerHeight,
+      )
+      endSpacer.style.height = `${releaseScroll}px`
     }
 
     const resetInnerStyles = (inner) => {
@@ -98,7 +101,9 @@ export default function AboutInsightStack({ insights }) {
     const nav = document.getElementById('site-nav')
 
     resizeObserver.observe(cards[0])
+    inners.forEach((inner) => resizeObserver.observe(inner))
     if (nav) resizeObserver.observe(nav)
+
     window.addEventListener('scroll', updateScroll, { passive: true })
     window.addEventListener('resize', updateLayout)
 
@@ -110,34 +115,37 @@ export default function AboutInsightStack({ insights }) {
   }, [insights])
 
   return (
-    <div
-      ref={containerRef}
-      className="mx-auto grid w-full max-w-[960px] gap-y-10"
-      style={{
-        gridTemplateRows: 'repeat(var(--cards-count, 4), var(--card-height, auto))',
-      }}
-    >
-      {insights.map((insight, index) => (
-        <div
-          key={insight.id}
-          ref={(element) => {
-            cardRefs.current[index] = element
-          }}
-          className="sticky"
-        >
+    <section className="relative isolate mx-auto w-full max-w-[960px]">
+      <div
+        ref={containerRef}
+        className="grid w-full gap-y-10"
+        style={{
+          gridTemplateRows: 'repeat(var(--cards-count, 4), var(--card-height, auto))',
+        }}
+      >
+        {insights.map((insight, index) => (
           <div
+            key={insight.id}
             ref={(element) => {
-              innerRefs.current[index] = element
+              cardRefs.current[index] = element
             }}
-            className="origin-top will-change-transform motion-reduce:transform-none motion-reduce:filter-none"
+            className="sticky"
           >
-            <AboutInsightCard
-              {...insight}
-              className="shadow-[0_25px_50px_-12px_rgba(23,23,23,0.12)]"
-            />
+            <div
+              ref={(element) => {
+                innerRefs.current[index] = element
+              }}
+              className="origin-top will-change-transform motion-reduce:transform-none motion-reduce:filter-none"
+            >
+              <AboutInsightCard
+                {...insight}
+                className="shadow-[0_25px_50px_-12px_rgba(23,23,23,0.12)]"
+              />
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+      <div ref={endSpacerRef} aria-hidden="true" />
+    </section>
   )
 }
