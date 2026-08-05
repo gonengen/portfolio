@@ -56,13 +56,31 @@ export default function Footer() {
       id="footer"
       className="flex w-full flex-col gap-[var(--spacing-stack)] border-t border-secondary py-[var(--spacing-stack)]"
     >
-      <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-        <p className="text-display flex-1 text-[128px] font-thin leading-none tracking-[-2.56px] text-primary max-lg:text-7xl max-md:text-5xl">
+      <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start">
+        <p className="text-display flex-1 text-[128px] font-thin leading-none tracking-[-2.56px] text-primary max-lg:text-7xl max-md:text-5xl lg:hidden">
           GONEN MAATUK@AI
         </p>
+
+        <button
+          type="button"
+          onClick={handleCopyEmail}
+          className="group hidden w-full max-w-[1040px] cursor-pointer text-left text-display text-[128px] font-thin leading-none tracking-[-2.56px] text-primary transition-opacity hover:opacity-80 lg:block"
+          aria-label="Copy email address"
+        >
+          {copied ? (
+            <span>COPIED!</span>
+          ) : (
+            <>
+              <span className="block group-hover:hidden">GONEN MAATUK@AI</span>
+              <span className="hidden group-hover:block">COPY EMAIL ADDRESS</span>
+            </>
+          )}
+        </button>
+
         <Button
           variant="bordered"
           onClick={handleCopyEmail}
+          className="lg:hidden"
           leftIcon={<img src={mailIcon} alt="" aria-hidden="true" />}
           ariaLabel="Copy email address"
         >
