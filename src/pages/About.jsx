@@ -156,10 +156,10 @@ export default function About() {
         </section>
       </div>
 
-      <section className="flex flex-col gap-[var(--spacing-stack)]">
+      <section className="flex flex-col gap-[var(--spacing-element-y)]">
         <AboutInsightStack insights={insights} />
 
-        <section className="relative z-10 mx-auto flex w-full max-w-[640px] flex-col gap-[var(--spacing-element-x)] bg-surface sm:flex-row">
+        <section className="mx-auto flex w-full max-w-[640px] flex-col gap-[var(--spacing-element-x)] sm:flex-row">
           <Button
             variant="split"
             href={resumePdf}

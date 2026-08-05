@@ -26,17 +26,15 @@ function getStickyTop() {
 
 export default function AboutInsightStack({ insights }) {
   const containerRef = useRef(null)
-  const endSpacerRef = useRef(null)
   const cardRefs = useRef([])
   const innerRefs = useRef([])
 
   useEffect(() => {
     const container = containerRef.current
-    const endSpacer = endSpacerRef.current
     const cards = cardRefs.current.filter(Boolean)
     const inners = innerRefs.current.filter(Boolean)
 
-    if (!container || !endSpacer || cards.length === 0) return undefined
+    if (!container || cards.length === 0) return undefined
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -48,16 +46,9 @@ export default function AboutInsightStack({ insights }) {
       container.style.setProperty('--card-height', `${innerHeight}px`)
 
       cards.forEach((card, index) => {
-        card.style.top = `${stickyTop}px`
-        card.style.paddingTop = `${index * STACK_STEP}px`
+        card.style.top = `${stickyTop + index * STACK_STEP}px`
         card.style.zIndex = String(index + 1)
       })
-
-      const releaseScroll = Math.max(
-        stickyTop,
-        window.innerHeight - stickyTop - innerHeight,
-      )
-      endSpacer.style.height = `${releaseScroll}px`
     }
 
     const resetInnerStyles = (inner) => {
@@ -115,10 +106,10 @@ export default function AboutInsightStack({ insights }) {
   }, [insights])
 
   return (
-    <section className="relative isolate mx-auto w-full max-w-[960px]">
+    <section className="relative mx-auto w-full max-w-[960px]">
       <div
         ref={containerRef}
-        className="grid w-full gap-y-10"
+        className="grid w-full gap-y-6"
         style={{
           gridTemplateRows: 'repeat(var(--cards-count, 4), var(--card-height, auto))',
         }}
@@ -145,7 +136,6 @@ export default function AboutInsightStack({ insights }) {
           </div>
         ))}
       </div>
-      <div ref={endSpacerRef} aria-hidden="true" />
     </section>
   )
 }
