@@ -65,23 +65,34 @@ export default function Footer() {
           type="button"
           onClick={handleCopyEmail}
           className="group hidden w-full max-w-[1040px] cursor-pointer text-left text-display text-[128px] font-thin leading-none tracking-[-2.56px] text-primary lg:block"
-          aria-label="Copy email address"
+          aria-label={copied ? 'Email copied to clipboard' : 'Copy email address'}
         >
-          {copied ? (
-            <span>COPIED!</span>
-          ) : (
-            <span className="grid [grid-template-areas:'stack']">
-              <span className="[grid-area:stack] transition-opacity duration-700 ease-in-out motion-reduce:transition-none group-hover:opacity-0">
-                GONEN MAATUK@AI
-              </span>
-              <span
-                className="pointer-events-none [grid-area:stack] opacity-0 transition-opacity duration-700 ease-in-out motion-reduce:transition-none group-hover:opacity-100"
-                aria-hidden="true"
-              >
-                COPY EMAIL ADDRESS
-              </span>
+          <span className="grid min-h-[1em] [grid-template-areas:'stack']">
+            <span
+              className={`[grid-area:stack] transition-opacity duration-700 ease-in-out motion-reduce:transition-none ${
+                copied ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
+              }`}
+            >
+              GONEN MAATUK@AI
             </span>
-          )}
+            <span
+              className={`pointer-events-none [grid-area:stack] transition-opacity duration-700 ease-in-out motion-reduce:transition-none ${
+                copied ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'
+              }`}
+              aria-hidden="true"
+            >
+              COPY EMAIL ADDRESS
+            </span>
+            <span
+              className={`pointer-events-none [grid-area:stack] transition-opacity duration-700 ease-in-out motion-reduce:transition-none ${
+                copied ? 'opacity-100' : 'opacity-0'
+              }`}
+              aria-live="polite"
+              aria-hidden={!copied}
+            >
+              COPIED!
+            </span>
+          </span>
         </button>
 
         <Button
