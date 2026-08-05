@@ -156,7 +156,7 @@ export default function About() {
         </section>
       </div>
 
-      <section className="flex flex-col gap-[var(--spacing-element-y)]">
+      <section className="flex flex-col gap-[var(--spacing-section)]">
         <AboutInsightStack insights={insights} />
 
         <section className="mx-auto flex w-full max-w-[640px] flex-col gap-[var(--spacing-element-x)] sm:flex-row">
