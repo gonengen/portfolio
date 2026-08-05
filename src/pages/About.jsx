@@ -2,7 +2,7 @@ import { useState } from 'react'
 import PageShell from '../components/PageShell'
 import PageHero from '../components/PageHero'
 import Button from '../components/Button'
-import AboutInsightCard from '../components/AboutInsightCard'
+import AboutInsightStack from '../components/AboutInsightStack'
 import aboutImage from '@assets/about/about_page_gig.png'
 import basketballIcon from '@assets/about/Illustration=basketball.png'
 import lightningPickIcon from '@assets/about/Illustration=lightning-pick.png'
@@ -156,11 +156,7 @@ export default function About() {
         </section>
       </div>
 
-      <section className="mx-auto flex w-full max-w-[960px] flex-col gap-6">
-        {insights.map((insight) => (
-          <AboutInsightCard key={insight.id} {...insight} />
-        ))}
-      </section>
+      <AboutInsightStack insights={insights} />
 
       <section className="mx-auto flex w-full max-w-[640px] flex-col gap-[var(--spacing-element-x)] sm:flex-row">
         <Button
