@@ -128,21 +128,23 @@ function StylePromptCaption() {
 export default function About() {
   return (
     <PageShell>
-      <PageHero headingClassName="max-w-6xl">
-        {`I design × the way I\u00A0play × the way I build`}
-      </PageHero>
+      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-[var(--spacing-section)]">
+        <PageHero headingClassName="w-full">
+          {`I design × the way I\u00A0play × the way I build`}
+        </PageHero>
 
-      <section className="mx-auto flex w-full max-w-[1200px] flex-col gap-[var(--spacing-element-y)]">
-        <div className="w-full overflow-hidden rounded-xl">
-          <img
-            src={aboutImage}
-            alt="Gonen Maatuk — dreamy pastel illustration"
-            className="block h-auto w-full"
-            loading="eager"
-          />
-        </div>
-        <StylePromptCaption />
-      </section>
+        <section className="flex w-full flex-col gap-[var(--spacing-element-y)]">
+          <div className="w-full overflow-hidden rounded-xl">
+            <img
+              src={aboutImage}
+              alt="Gonen Maatuk — dreamy pastel illustration"
+              className="block h-auto w-full"
+              loading="eager"
+            />
+          </div>
+          <StylePromptCaption />
+        </section>
+      </div>
 
       <section className="mx-auto flex w-full max-w-[960px] flex-col gap-[var(--spacing-stack)]">
         {insights.map((insight) => (
