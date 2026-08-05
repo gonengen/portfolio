@@ -1,13 +1,78 @@
+import { useState } from 'react'
 import PageShell from '../components/PageShell'
 import PageHero from '../components/PageHero'
 import Button from '../components/Button'
-import basketballGif from '@assets/about/about_page_gif_1.gif'
-import guitarImage from '@assets/about/about_page_ןmedia.png'
+import aboutImage from '@assets/about/about_page_gig.png'
 import resumePdf from '@assets/cv/Gonen-Maatuk-Senior-AI-Productt-Designer_2026.pdf'
 import resumeIcon from '@assets/Icons/Property 1=mark_email_read.svg'
 import downloadIcon from '@assets/Icons/Property 1=download.svg'
 import linkedinIcon from '@assets/Icons/Property 1=linkedin.svg'
 import callMadeIcon from '@assets/Icons/Property 1=call_made.svg'
+
+const STYLE_PROMPT = `Transform the uploaded image into a dreamy, cinematic pastel illustration while preserving the original composition, subject, pose, perspective, framing, lighting, and all important details.
+
+Do not redesign or reinterpret the image. Keep the original photograph immediately recognizable.
+
+STYLE
+
+Create a soft, atmospheric aesthetic inspired by dreamy indie album artwork, vintage photography, and modern editorial illustration.
+
+Use a nearly monochromatic palette built around:
+
+• Periwinkle blue
+• Lavender
+• Soft indigo
+• Dusty violet
+
+Replace green foliage with saturated pastel pink and soft lavender while keeping everything else within the monochromatic blue-purple palette.
+
+Apply a soft luminous bloom around every major element—not just bright areas. Trees, plants, clouds, buildings, people and objects should all have a subtle glowing halo that gently blends into the background.
+
+Use:
+• soft atmospheric haze
+• analog film grain
+• subtle halftone texture
+• matte finish
+• gentle color gradients
+• low contrast
+• soft edge transitions
+• shallow depth of field
+• dreamy cinematic lighting
+
+The glow should feel optical rather than magical, similar to vintage lenses with strong bloom.
+
+Maintain smooth simplified shapes without making the image look cartoonish.
+
+Preserve facial identity, skin texture, typography and important details.
+
+Keep hair natural and only slightly soften curls if present.
+
+FINAL LOOK
+
+The result should resemble a nostalgic dream photographed through a vintage lens with strong bloom, monochromatic pastel color grading, analog grain, soft focus, and glowing edges.
+
+NEGATIVE PROMPT
+
+Do not change the composition.
+Do not crop.
+Do not move objects.
+Do not replace objects.
+Do not change facial identity.
+Do not change clothing.
+Do not change the camera angle.
+Do not add new elements.
+No anime.
+No cartoon.
+No watercolor.
+No oil painting.
+No plastic CGI.
+No HDR.
+No oversharpening.
+No harsh contrast.
+No saturated rainbow colors.
+No hard outlines.
+No heavy blur.
+No fantasy effects.`
 
 const insights = [
   {
@@ -36,6 +101,30 @@ function InsightRow({ emoji, text }) {
   )
 }
 
+function StylePromptCaption() {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(STYLE_PROMPT)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 2000)
+    } catch {
+      setCopied(false)
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      className="cursor-pointer text-left text-2xl font-light leading-[1.6] text-primary transition-opacity hover:opacity-70"
+    >
+      {copied ? 'Copied to clipboard' : 'Copy Style Prompt'}
+    </button>
+  )
+}
+
 export default function About() {
   return (
     <PageShell>
@@ -43,23 +132,16 @@ export default function About() {
         {`I design × the way I\u00A0play × the way I build`}
       </PageHero>
 
-      <section className="flex w-full items-center justify-center gap-[var(--spacing-element-x)] opacity-90 max-md:flex-col">
-        <div className="w-[271px] shrink-0 overflow-hidden rounded-xl max-md:w-full">
+      <section className="mx-auto flex w-full max-w-[1200px] flex-col gap-[var(--spacing-element-y)]">
+        <div className="w-full overflow-hidden rounded-xl">
           <img
-            src={basketballGif}
-            alt="Gonen playing basketball"
-            className="block w-full h-auto object-cover"
+            src={aboutImage}
+            alt="Gonen Maatuk — dreamy pastel illustration"
+            className="block h-auto w-full"
             loading="eager"
           />
         </div>
-        <div className="w-[538px] shrink-0 overflow-hidden rounded-xl max-md:w-full">
-          <img
-            src={guitarImage}
-            alt="Gonen playing guitar"
-            className="block w-full h-auto object-cover"
-            loading="lazy"
-          />
-        </div>
+        <StylePromptCaption />
       </section>
 
       <section className="mx-auto flex w-full max-w-[960px] flex-col gap-[var(--spacing-stack)]">
