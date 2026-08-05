@@ -71,11 +71,11 @@ export default function Footer() {
             <span>COPIED!</span>
           ) : (
             <span className="grid [grid-template-areas:'stack']">
-              <span className="[grid-area:stack] transition-opacity duration-500 ease-in-out motion-reduce:transition-none group-hover:opacity-0">
+              <span className="[grid-area:stack] transition-opacity duration-700 ease-in-out motion-reduce:transition-none group-hover:opacity-0">
                 GONEN MAATUK@AI
               </span>
               <span
-                className="pointer-events-none [grid-area:stack] opacity-0 transition-opacity duration-500 ease-in-out motion-reduce:transition-none group-hover:opacity-100"
+                className="pointer-events-none [grid-area:stack] opacity-0 transition-opacity duration-700 ease-in-out motion-reduce:transition-none group-hover:opacity-100"
                 aria-hidden="true"
               >
                 COPY EMAIL ADDRESS
