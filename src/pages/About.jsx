@@ -2,7 +2,12 @@ import { useState } from 'react'
 import PageShell from '../components/PageShell'
 import PageHero from '../components/PageHero'
 import Button from '../components/Button'
+import AboutInsightCard from '../components/AboutInsightCard'
 import aboutImage from '@assets/about/about_page_gig.png'
+import basketballIcon from '@assets/about/Illustration=basketball.png'
+import lightningPickIcon from '@assets/about/Illustration=lightning-pick.png'
+import rainbowBrainIcon from '@assets/about/Illustration=rainbow-brain.png'
+import firePencilIcon from '@assets/about/Illustration=fire-pencil.png'
 import resumePdf from '@assets/cv/Gonen-Maatuk-Senior-AI-Productt-Designer_2026.pdf'
 import resumeIcon from '@assets/Icons/Property 1=mark_email_read.svg'
 import downloadIcon from '@assets/Icons/Property 1=download.svg'
@@ -76,30 +81,35 @@ No fantasy effects.`
 
 const insights = [
   {
-    emoji: '🏀',
-    text: 'Playing basketball taught me that great decisions happen before the ball arrives. The mix of instinct, strategy, and teamwork naturally found its way into my design work.',
+    id: 'basketball',
+    icon: basketballIcon,
+    iconAlt: 'Basketball illustration',
+    lead: 'Playing basketball taught me that great decisions happen before the ball arrives.',
+    emphasis:
+      'The mix of instinct, strategy, and teamwork naturally found its way into my design work.',
   },
   {
-    emoji: '🎸',
-    text: 'Making music taught me that the smallest details often have the biggest emotional impact. That obsession with nuance shapes the way I design.',
+    id: 'music',
+    icon: lightningPickIcon,
+    iconAlt: 'Guitar pick illustration',
+    lead: 'Making music taught me that the smallest details often have the biggest emotional impact.',
+    emphasis: 'That obsession with nuance shapes the way I design.',
   },
   {
-    emoji: '🙌🏻',
-    text: 'Helping other designers through mentoring has become one of the most rewarding parts of my career. Great feedback starts with better questions.',
+    id: 'mentoring',
+    icon: rainbowBrainIcon,
+    iconAlt: 'Brain illustration',
+    lead: 'Helping other designers through mentoring has become one of the most rewarding parts of my career.',
+    emphasis: 'Great feedback starts with better questions.',
   },
   {
-    emoji: '✏️',
-    text: 'Writing on Medium helps me explore ideas beyond design. I usually understand a topic best after I\'ve tried explaining it to someone else.',
+    id: 'writing',
+    icon: firePencilIcon,
+    iconAlt: 'Pencil illustration',
+    lead: 'Writing on Medium helps me explore ideas beyond design.',
+    emphasis: "I usually understand a topic best after I've tried explaining it to someone else.",
   },
 ]
-
-function InsightRow({ emoji, text }) {
-  return (
-    <p className="text-2xl font-medium leading-[1.44] tracking-[0.24px] text-primary">
-      <span className="text-secondary">{emoji} .</span> {text}
-    </p>
-  )
-}
 
 function StylePromptCaption() {
   const [copied, setCopied] = useState(false)
@@ -146,9 +156,9 @@ export default function About() {
         </section>
       </div>
 
-      <section className="mx-auto flex w-full max-w-[960px] flex-col gap-[var(--spacing-stack)]">
+      <section className="mx-auto flex w-full max-w-[960px] flex-col gap-6">
         {insights.map((insight) => (
-          <InsightRow key={insight.emoji} {...insight} />
+          <AboutInsightCard key={insight.id} {...insight} />
         ))}
       </section>
 
