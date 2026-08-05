@@ -64,16 +64,23 @@ export default function Footer() {
         <button
           type="button"
           onClick={handleCopyEmail}
-          className="group hidden w-full max-w-[1040px] cursor-pointer text-left text-display text-[128px] font-thin leading-none tracking-[-2.56px] text-primary transition-opacity hover:opacity-80 lg:block"
+          className="group hidden w-full max-w-[1040px] cursor-pointer text-left text-display text-[128px] font-thin leading-none tracking-[-2.56px] text-primary lg:block"
           aria-label="Copy email address"
         >
           {copied ? (
             <span>COPIED!</span>
           ) : (
-            <>
-              <span className="block group-hover:hidden">GONEN MAATUK@AI</span>
-              <span className="hidden group-hover:block">COPY EMAIL ADDRESS</span>
-            </>
+            <span className="grid [grid-template-areas:'stack']">
+              <span className="[grid-area:stack] transition-opacity duration-500 ease-in-out motion-reduce:transition-none group-hover:opacity-0">
+                GONEN MAATUK@AI
+              </span>
+              <span
+                className="pointer-events-none [grid-area:stack] opacity-0 transition-opacity duration-500 ease-in-out motion-reduce:transition-none group-hover:opacity-100"
+                aria-hidden="true"
+              >
+                COPY EMAIL ADDRESS
+              </span>
+            </span>
           )}
         </button>
 
