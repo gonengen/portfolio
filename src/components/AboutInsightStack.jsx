@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import AboutInsightCard from './AboutInsightCard'
 
-const STACK_OFFSET = 20
+const NAV_GAP = 64
 const STACK_STEP = 20
 
 function valueAtPercentage({ from, to, percentage }) {
@@ -19,6 +19,11 @@ function getScrollPercentage(element, offsetTop, offsetBottom) {
   return Math.min(1, Math.max(0, (end - rect.top) / range))
 }
 
+function getStickyTop() {
+  const nav = document.getElementById('site-nav')
+  return (nav?.offsetHeight ?? 0) + NAV_GAP
+}
+
 export default function AboutInsightStack({ insights }) {
   const containerRef = useRef(null)
   const cardRefs = useRef([])
@@ -34,14 +39,22 @@ export default function AboutInsightStack({ insights }) {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     const updateLayout = () => {
-      const cardHeight = cards[0].clientHeight
+      const stickyTop = getStickyTop()
+      const innerHeight = inners[0]?.offsetHeight ?? cards[0].clientHeight
+      const rowHeight = innerHeight + STACK_STEP
 
+      container.style.setProperty('--stack-sticky-top', `${stickyTop}px`)
       container.style.setProperty('--cards-count', String(cards.length))
-      container.style.setProperty('--card-height', `${cardHeight}px`)
+      container.style.setProperty('--card-height', `${rowHeight}px`)
 
       cards.forEach((card, index) => {
-        card.style.paddingTop = `${STACK_OFFSET + index * STACK_STEP}px`
+        card.style.top = `${stickyTop}px`
+        card.style.paddingTop = `${index * STACK_STEP}px`
       })
+
+      const gap = 40
+      const trailingSpace = Math.max(0, (cards.length - 1) * (rowHeight + gap))
+      container.style.marginBottom = `-${trailingSpace}px`
     }
 
     const resetInnerStyles = (inner) => {
@@ -50,6 +63,8 @@ export default function AboutInsightStack({ insights }) {
     }
 
     const updateScroll = () => {
+      const stickyTop = getStickyTop()
+
       cards.forEach((card, index) => {
         const inner = inners[index]
         if (!inner) return
@@ -60,7 +75,7 @@ export default function AboutInsightStack({ insights }) {
         }
 
         const nextCard = cards[index + 1]
-        const offsetTop = STACK_OFFSET + index * STACK_STEP
+        const offsetTop = stickyTop + index * STACK_STEP
         const offsetBottom = window.innerHeight - card.clientHeight
         const percentageY = getScrollPercentage(nextCard, offsetTop, offsetBottom)
         const toScale = 1 - (cards.length - 1 - index) * 0.1
@@ -80,7 +95,10 @@ export default function AboutInsightStack({ insights }) {
       updateScroll()
     })
 
+    const nav = document.getElementById('site-nav')
+
     resizeObserver.observe(cards[0])
+    if (nav) resizeObserver.observe(nav)
     window.addEventListener('scroll', updateScroll, { passive: true })
     window.addEventListener('resize', updateLayout)
 
@@ -92,37 +110,34 @@ export default function AboutInsightStack({ insights }) {
   }, [insights])
 
   return (
-    <>
-      <div
-        ref={containerRef}
-        className="mx-auto grid w-full max-w-[960px] gap-y-10"
-        style={{
-          gridTemplateRows: 'repeat(var(--cards-count, 4), var(--card-height, auto))',
-        }}
-      >
-        {insights.map((insight, index) => (
+    <div
+      ref={containerRef}
+      className="mx-auto grid w-full max-w-[960px] gap-y-10"
+      style={{
+        gridTemplateRows: 'repeat(var(--cards-count, 4), var(--card-height, auto))',
+      }}
+    >
+      {insights.map((insight, index) => (
+        <div
+          key={insight.id}
+          ref={(element) => {
+            cardRefs.current[index] = element
+          }}
+          className="sticky"
+        >
           <div
-            key={insight.id}
             ref={(element) => {
-              cardRefs.current[index] = element
+              innerRefs.current[index] = element
             }}
-            className="sticky top-0"
+            className="origin-top will-change-transform motion-reduce:transform-none motion-reduce:filter-none"
           >
-            <div
-              ref={(element) => {
-                innerRefs.current[index] = element
-              }}
-              className="origin-top will-change-transform motion-reduce:transform-none motion-reduce:filter-none"
-            >
-              <AboutInsightCard
-                {...insight}
-                className="shadow-[0_25px_50px_-12px_rgba(23,23,23,0.12)]"
-              />
-            </div>
+            <AboutInsightCard
+              {...insight}
+              className="shadow-[0_25px_50px_-12px_rgba(23,23,23,0.12)]"
+            />
           </div>
-        ))}
-      </div>
-      <div className="h-[40vh]" aria-hidden="true" />
-    </>
+        </div>
+      ))}
+    </div>
   )
 }

@@ -38,6 +38,7 @@ export default function Navbar() {
 
   return (
     <header
+      id="site-nav"
       className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
         isScrolled
           ? 'border-secondary/40 bg-surface-primary/60 backdrop-blur-md'
