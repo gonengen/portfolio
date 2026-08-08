@@ -1,0 +1,591 @@
+# AI Job Search Intelligence — Master Prompt
+
+Use my Gmail as the primary source of truth for my job search.
+
+Your goal is to build a complete, data-driven analysis of my job search — not just count applications and rejections.
+
+Analyze my current applications, retrieve their job requirements, investigate my previous application history with each company, and identify patterns that may explain which applications progress and which are rejected.
+
+Do not invent missing information.
+Clearly distinguish between OBSERVED DATA, CORRELATION, and SPECULATION.
+
+---
+
+# Step 1 — Find Current Applications
+
+Search Gmail for every job application I submitted during the last 30 days.
+
+Include applications submitted through:
+
+- Company career pages
+- LinkedIn
+- Greenhouse
+- Lever
+- Workday
+- Comeet
+- Ashby
+- SmartRecruiters
+- Recruiter outreach
+- Direct email
+- Other ATS platforms
+
+Identify duplicate emails belonging to the same application and consolidate them into one record.
+
+---
+
+# Step 2 — Build the Application Database
+
+For every current application, extract:
+
+| Field | Description |
+|---|---|
+| Company | Company name |
+| Job Title | Exact role title |
+| Application Date | Submission date |
+| Application Method | LinkedIn / Career Site / Recruiter / Referral / Direct Email / ATS |
+| Current Status | Waiting / Rejected / Interview / Assessment / Offer / Other |
+| Last Activity | Date of most recent recruiting-related interaction |
+| Rejection Date | If applicable |
+| Days Since Applied | Calculate automatically |
+| Days to Rejection | If rejected |
+| Days to First Response | If a response was received |
+
+---
+
+# Step 3 — Retrieve the Job Description
+
+For every application, retrieve the original Job Description whenever possible.
+
+First search Gmail for the original posting or application confirmation.
+
+If the full description is not available there, search:
+
+1. The company's official careers website
+2. Greenhouse
+3. Lever
+4. Workday
+5. Comeet
+6. Ashby
+7. Other public job boards or cached/searchable copies
+
+Prefer the exact historical posting associated with my application.
+
+IMPORTANT:
+If you find a current posting with the same title but cannot verify that it is the same version I applied to, mark it as:
+
+POSSIBLE MATCH — NOT VERIFIED
+
+If the original Job Description cannot be reliably found, mark it:
+
+UNAVAILABLE
+
+Do not reconstruct or invent the requirements.
+
+---
+
+# Step 4 — Analyze Each Job Description
+
+For every verified Job Description, extract:
+
+## Role Information
+
+- Seniority level
+- Department / Team
+- Main purpose of the role
+
+## Must-Have Requirements
+
+List the explicit mandatory requirements.
+
+## Nice-to-Have Requirements
+
+List preferred or optional qualifications separately.
+
+## Main Responsibilities
+
+Summarize the core responsibilities.
+
+## Product / Company Context
+
+Classify the role where applicable as:
+
+- Enterprise SaaS
+- B2B
+- B2C / Consumer
+- AI
+- Cybersecurity
+- Fintech
+- Gaming
+- Web3
+- Healthcare
+- Data / Analytics
+- Cloud / Infrastructure
+- Developer Tools
+- Marketplace
+- Growth
+- Design Systems
+- Other
+
+Multiple classifications are allowed.
+
+## Skills & Keywords
+
+Extract important skills and concepts such as:
+
+- Product Design
+- UX Architecture
+- Information Architecture
+- Systems Thinking
+- Complex Systems
+- User Research
+- User Interviews
+- Usability Testing
+- User Flows
+- Wireframing
+- Prototyping
+- Interaction Design
+- Design Systems
+- Data Visualization
+- Dashboards
+- Enterprise UX
+- Operational Workflows
+- Growth
+- Activation
+- Retention
+- Conversion
+- AI Product Design
+- Human-AI Interaction
+- Conversational UX
+- AI Workflows
+
+## Tools & Technologies
+
+Extract explicitly mentioned tools and technologies, including:
+
+- Figma
+- FigJam
+- Adobe Photoshop
+- Illustrator
+- After Effects
+- HTML
+- CSS
+- Bootstrap
+- Claude
+- Claude Code
+- Cursor
+- AI tools
+- Other relevant technologies
+
+Do not mark a skill as required unless it actually appears in the Job Description.
+
+---
+
+# Step 5 — Previous Application History
+
+This step is critical.
+
+For EVERY company in the current application list, search my Gmail history for ANY previous job application or recruiting interaction with that same company during the LAST 12 MONTHS.
+
+Search for:
+
+- Previous application confirmations
+- Previous rejection emails
+- Recruiter outreach
+- Interview invitations
+- Assessments
+- Scheduling emails
+- ATS notifications
+- Previous roles at the same company
+
+Do this even if the previous application used a different job title.
+
+For each company, add:
+
+| Field | Description |
+|---|---|
+| Applied Before | Yes / No |
+| Previous Application Date | Most recent previous application |
+| Previous Job Title | Previous role |
+| Previous Status | Rejected / Interview / Assessment / Withdrawn / Unknown |
+| Days Since Previous Application | Difference between previous and current application |
+| Same Role | Yes / No |
+| Previous Applications Count | Number found during the last 12 months |
+
+Classify each current application as:
+
+- FIRST APPLICATION
+- REAPPLIED < 3 MONTHS
+- REAPPLIED 3–6 MONTHS
+- REAPPLIED 6–12 MONTHS
+
+IMPORTANT:
+
+A previous application does NOT prove that it caused a current rejection.
+
+Do not claim that an ATS automatically rejected me unless there is direct evidence.
+
+Different email addresses, phone numbers, names, LinkedIn profiles, or other identifiers MAY potentially allow recruiting systems to associate candidate records, but do not assume this happened unless evidence is available.
+
+Report the historical relationship first, then test whether a pattern exists.
+
+---
+
+# Step 6 — Analyze Reapplication Patterns
+
+Compare FIRST APPLICATIONS with REAPPLICATIONS.
+
+Calculate where the available sample allows:
+
+- Rejection rate for FIRST APPLICATIONS
+- Rejection rate for all REAPPLICATIONS
+- Rejection rate for REAPPLIED < 3 MONTHS
+- Rejection rate for REAPPLIED 3–6 MONTHS
+- Rejection rate for REAPPLIED 6–12 MONTHS
+- Interview rate for first applications
+- Interview rate for reapplications
+- Assessment rate for first applications
+- Assessment rate for reapplications
+- Median / average time to rejection for each group
+
+Pay special attention to:
+
+## Fast Rejections
+
+Identify applications rejected:
+
+- Same day
+- Within 24 hours
+- Within 3 days
+- Within 7 days
+
+Check whether unusually fast rejections correlate with:
+
+- Previous applications to that company
+- Applying recently to the same company
+- Applying to the same role
+- Seniority mismatch
+- Specialized domain requirements
+
+Do NOT label a rejection "automatic" based only on speed.
+
+---
+
+# Step 7 — Job Search Pipeline Analytics
+
+Calculate:
+
+## Overall Pipeline
+
+- Total applications
+- Waiting
+- Rejected
+- Interviews
+- Assessments
+- Offers
+- Other outcomes
+
+## Conversion
+
+Calculate:
+
+- Application → Response Rate
+- Application → Interview Rate
+- Application → Assessment Rate
+- Application → Interview/Assessment Combined
+- Application → Rejection Rate
+
+Do not treat applications that are still waiting as failures.
+
+---
+
+# Step 8 — Seniority Analysis
+
+Group applications by:
+
+- Junior
+- Mid
+- Mid / Senior
+- Senior
+- Lead
+- Staff
+- Principal
+- Manager
+- Head / Director
+
+Analyze whether rejection or progression rates differ by seniority.
+
+Specifically determine whether I may be applying above, below, or appropriately for my demonstrated experience level.
+
+---
+
+# Step 9 — Domain Analysis
+
+Group applications by domain, including:
+
+- AI
+- Enterprise SaaS
+- Cybersecurity
+- Consumer
+- Fintech
+- Gaming
+- Web3
+- Healthcare
+- Cloud / Infrastructure
+- Data / Analytics
+- Marketplace
+- Growth
+
+For each meaningful group, calculate where sample size permits:
+
+- Number of applications
+- Rejections
+- Interviews
+- Assessments
+- Pending
+- Progression rate
+
+Do not draw strong conclusions from extremely small groups.
+
+---
+
+# Step 10 — Application Channel Analysis
+
+Group applications by source:
+
+- LinkedIn
+- Easy Apply
+- Company Website
+- Recruiter Outreach
+- Referral
+- Direct Email
+- Greenhouse
+- Lever
+- Comeet
+- Other
+
+Compare response and progression rates.
+
+Identify whether one application method appears significantly more effective than another.
+
+---
+
+# Step 11 — Skills & Keyword Analysis
+
+Across all verified Job Descriptions, identify:
+
+## Most Frequently Requested Skills
+
+Rank skills by frequency.
+
+Show:
+
+Skill | Number of Jobs | Percentage of Jobs
+
+## Most Frequently Requested Tools
+
+Rank tools and technologies by frequency.
+
+## Recurring Product Design Themes
+
+Identify themes such as:
+
+- Enterprise SaaS
+- Complex Systems
+- Information Architecture
+- Systems Thinking
+- Design Systems
+- Data Visualization
+- User Research
+- Growth
+- Consumer Products
+- AI Product Design
+
+Do not claim that a keyword appears in X% of jobs unless it was actually counted.
+
+---
+
+# Step 12 — CV Gap Analysis
+
+If my current CV is available to you, compare it with the verified Job Descriptions.
+
+Identify recurring requirements that:
+
+1. Are strongly represented in my CV
+2. Exist in my experience but may not be prominent enough
+3. Appear frequently in jobs but are genuinely missing from my experience
+4. Are highly specialized requirements that should NOT be added unless truthful
+
+Rank potential gaps by frequency and importance.
+
+NEVER recommend adding experience, tools, technologies, or domain expertise that I do not actually have.
+
+Distinguish between:
+
+MISSING EXPERIENCE
+
+and
+
+EXISTING EXPERIENCE THAT NEEDS BETTER POSITIONING
+
+---
+
+# Step 13 — Positioning Analysis
+
+Based on the jobs I am actually applying to, determine which positioning appears most relevant:
+
+## ENTERPRISE
+Enterprise SaaS, Complex Systems, Operational Platforms, Information Architecture, Data Visualization, Design Systems
+
+## AI
+AI Products, Human-AI Interaction, AI Workflows, Conversational UX, AI-powered Experiences
+
+## CONSUMER & GROWTH
+Consumer Products, Growth, Activation, Engagement, Retention, Conversion, Monetization
+
+For each application, assign the most appropriate profile:
+
+ENTERPRISE / AI / CONSUMER & GROWTH
+
+Then analyze progression rates by profile.
+
+---
+
+# Step 14 — Strategic Diagnosis
+
+Answer the following questions based ONLY on the available data:
+
+1. Is my CV generating interviews / assessments?
+
+2. Are rejection rates unusually concentrated in particular industries?
+
+3. Are reapplications being rejected more frequently than first applications?
+
+4. Are recent reapplications associated with faster rejection?
+
+5. Am I applying to roles above my seniority?
+
+6. Which domains currently show the strongest response?
+
+7. Which application channels perform best?
+
+8. Which requirements appear most frequently across the jobs?
+
+9. Are important skills buried too deep in my CV?
+
+10. Does my positioning appear too broad?
+
+11. Is there evidence that Enterprise, AI, or Consumer positioning performs better?
+
+12. Are there enough observations to draw these conclusions confidently?
+
+---
+
+# Step 15 — Confidence & Evidence
+
+This section is mandatory.
+
+For every major conclusion, label it as:
+
+### STRONG EVIDENCE
+Supported by enough observations and a clear pattern.
+
+### EARLY SIGNAL
+A pattern exists, but the sample is still small.
+
+### SPECULATION
+Plausible explanation, but not supported by enough evidence.
+
+Never present speculation as fact.
+
+For small sample sizes, explicitly state that the result may change as more applications are collected.
+
+---
+
+# Step 16 — Final Output
+
+Produce the report in this order:
+
+## 1. Executive Summary
+
+Give me the 5–10 most important findings.
+
+## 2. Master Application Table
+
+One row per current application containing:
+
+Company
+Job Title
+Application Date
+Status
+Application Method
+Seniority
+Domain
+Profile
+Previous Application?
+Previous Application Date
+Previous Role
+Reapplication Window
+Days to Response
+Days to Rejection
+
+## 3. Previous Application History
+
+Show all discovered previous applications from the last 12 months.
+
+## 4. Pipeline Analytics
+
+Applications, responses, interviews, assessments, rejections, and pending.
+
+## 5. Reapplication Analysis
+
+First applications vs. reapplications.
+
+## 6. Seniority Analysis
+
+Performance by role level.
+
+## 7. Domain Analysis
+
+Performance by industry/product type.
+
+## 8. Application Channel Analysis
+
+Performance by submission method.
+
+## 9. Skills & Keyword Analysis
+
+Most common requirements across verified Job Descriptions.
+
+## 10. Positioning Analysis
+
+Enterprise vs. AI vs. Consumer & Growth.
+
+## 11. Strategic Recommendations
+
+Give me a short, prioritized list of actions.
+
+Separate recommendations into:
+
+KEEP DOING
+
+CHANGE NOW
+
+TEST
+
+NOT ENOUGH DATA YET
+
+---
+
+# Final Rule
+
+Treat this as a DATA ANALYSIS task, not motivational career coaching.
+
+Do not try to make the results sound positive or negative.
+
+If the data suggests my strategy is working, say so.
+
+If the data suggests something is failing, say so.
+
+If the sample is too small to know, say that.
+
+The goal is to discover what is actually happening in my job search and improve future decisions based on evidence.

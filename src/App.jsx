@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { BrowserRouter, Navigate, Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
+import Stash from './pages/Stash'
 import CaseStudyDetail from './pages/CaseStudyDetail'
 
 function ScrollToTop() {
@@ -35,6 +36,7 @@ function AppRoutes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/stash" element={<Stash />} />
         <Route path="/case-study/:id" element={<CaseStudyDetail />} />
         <Route path="/work/robonote" element={<Navigate to="/case-study/robonote" replace />} />
         <Route path="/work/easy" element={<Navigate to="/case-study/easy" replace />} />
