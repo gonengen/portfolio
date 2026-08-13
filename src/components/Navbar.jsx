@@ -49,16 +49,16 @@ export default function Navbar() {
       <div className="mx-auto flex w-full max-w-[1440px] justify-center px-4 py-[var(--spacing-element-y)] md:px-8">
         <nav className={pillClass}>
           <div className="hidden items-center gap-[var(--spacing-inner)] p-[var(--spacing-tight-x)] md:flex">
-            <Button fill to="/">
+            <Button fill={!isScrolled} to="/">
               Home
             </Button>
-            <Button fill to="/about">
+            <Button fill={!isScrolled} to="/about">
               About
             </Button>
-            <Button fill onClick={handleContactClick}>
+            <Button fill={!isScrolled} onClick={handleContactClick}>
               Contact
             </Button>
-            <Button fill type="button">
+            <Button fill={!isScrolled} type="button">
               000000
             </Button>
           </div>
