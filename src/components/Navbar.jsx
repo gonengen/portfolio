@@ -3,8 +3,11 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import homeIcon from '@assets/Icons/Property 1=home.svg'
 import aboutIcon from '@assets/Icons/Property 1=face_5.svg'
 import contactIcon from '@assets/Icons/Property 1=chat_bubble.svg'
-import stashIcon from '@assets/Icons/Property 1=partly_cloudy_night.svg'
+import darkModeIcon from '@assets/Icons/Property 1=partly_cloudy_night.svg'
+import brightModeIcon from '@assets/Icons/Property 1=clear_day.svg'
 import Button from './Button'
+import NavIcon from './NavIcon'
+import { useTheme } from '../context/ThemeContext'
 
 function scrollToFooter() {
   document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })
@@ -18,6 +21,7 @@ const navFrameClass = (isScrolled) =>
 export default function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
+  const { isDark, toggleTheme } = useTheme()
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -43,6 +47,9 @@ export default function Navbar() {
   }
 
   const pillClass = navFrameClass(isScrolled)
+  const themeToggleLabel = isDark ? 'FFFFFF' : '000000'
+  const themeToggleIcon = isDark ? brightModeIcon : darkModeIcon
+  const themeToggleAriaLabel = isDark ? 'Switch to bright mode' : 'Switch to dark mode'
 
   return (
     <header id="site-nav" className="sticky top-0 z-50 w-full">
@@ -58,8 +65,13 @@ export default function Navbar() {
             <Button fill={!isScrolled} onClick={handleContactClick}>
               Contact
             </Button>
-            <Button fill={!isScrolled} type="button">
-              000000
+            <Button
+              fill={!isScrolled}
+              type="button"
+              onClick={toggleTheme}
+              ariaLabel={themeToggleAriaLabel}
+            >
+              {themeToggleLabel}
             </Button>
           </div>
 
@@ -68,25 +80,26 @@ export default function Navbar() {
               to="/"
               iconOnly
               ariaLabel="Home"
-              leftIcon={<img src={homeIcon} alt="" aria-hidden="true" />}
+              leftIcon={<NavIcon src={homeIcon} />}
             />
             <Button
               to="/about"
               iconOnly
               ariaLabel="About"
-              leftIcon={<img src={aboutIcon} alt="" aria-hidden="true" />}
+              leftIcon={<NavIcon src={aboutIcon} />}
             />
             <Button
               onClick={handleContactClick}
               iconOnly
               ariaLabel="Contact"
-              leftIcon={<img src={contactIcon} alt="" aria-hidden="true" />}
+              leftIcon={<NavIcon src={contactIcon} />}
             />
             <Button
               type="button"
               iconOnly
-              ariaLabel="000000"
-              leftIcon={<img src={stashIcon} alt="" aria-hidden="true" />}
+              onClick={toggleTheme}
+              ariaLabel={themeToggleAriaLabel}
+              leftIcon={<NavIcon src={themeToggleIcon} />}
             />
           </div>
         </nav>

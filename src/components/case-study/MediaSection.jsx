@@ -55,7 +55,7 @@ export default function MediaSection({
                 </h3>
               )}
               {bodyText && (
-                <p className="text-2xl font-light leading-[1.6] text-[#c7c8ca] max-md:text-lg">
+                <p className="text-2xl font-light leading-[1.6] text-secondary max-md:text-lg">
                   {bodyText}
                 </p>
               )}

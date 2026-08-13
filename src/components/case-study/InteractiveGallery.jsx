@@ -97,7 +97,7 @@ function GalleryPanel({
                   role="tab"
                   onClick={() => onSelectIndex(index)}
                   className={`relative shrink-0 px-3 py-2 text-sm font-medium leading-none transition-colors duration-300 md:text-base ${
-                    isActive ? 'text-white' : 'text-[#94949e] hover:text-[#c7c8ca]'
+                    isActive ? 'text-white' : 'text-secondary hover:text-primary/70'
                   }`}
                   aria-selected={isActive}
                   aria-controls={`gallery-panel-${tab.id}`}
