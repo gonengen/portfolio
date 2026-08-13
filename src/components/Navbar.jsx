@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import logoDesktop from '@assets/logo/logo_desktop.svg'
-import logoMobile from '@assets/logo/logo_mobile.svg'
+import { useLocation, useNavigate } from 'react-router-dom'
+import homeIcon from '@assets/Icons/Property 1=home.svg'
 import aboutIcon from '@assets/Icons/Property 1=face_5.svg'
 import contactIcon from '@assets/Icons/Property 1=chat_bubble.svg'
+import stashIcon from '@assets/Icons/Property 1=partly_cloudy_night.svg'
 import Button from './Button'
 
 function scrollToFooter() {
@@ -37,30 +37,17 @@ export default function Navbar() {
     navigate('/#footer')
   }
 
-  return (
-    <header
-      id="site-nav"
-      className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
-        isScrolled
-          ? 'border-secondary/40 bg-surface-primary/60 backdrop-blur-md'
-          : 'border-secondary bg-surface-primary'
-      }`}
-    >
-      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-4 py-[var(--spacing-element-y)] md:px-8">
-        <Link to="/" className="shrink-0 transition-opacity hover:opacity-70">
-          <img
-            src={logoDesktop}
-            alt="Gonen Maatuk"
-            className="hidden h-[26px] w-auto md:block"
-          />
-          <img
-            src={logoMobile}
-            alt="Gonen Maatuk"
-            className="block h-[25px] w-auto md:hidden"
-          />
-        </Link>
+  const pillClass = `inline-flex items-center rounded-full transition-all duration-300 ${
+    isScrolled
+      ? 'border border-secondary/40 bg-container/60 backdrop-blur-md'
+      : 'bg-container'
+  }`
 
-        <nav className="hidden items-center gap-8 md:flex">
+  return (
+    <header id="site-nav" className="sticky top-0 z-50 w-full">
+      <div className="mx-auto flex w-full max-w-[1440px] justify-center px-4 py-[var(--spacing-element-y)] md:px-8">
+        <nav className={`${pillClass} hidden md:inline-flex`}>
+          <Button to="/">Home</Button>
           <Button to="/about">About</Button>
           <Button
             onClick={handleContactClick}
@@ -68,9 +55,11 @@ export default function Navbar() {
           >
             Contact
           </Button>
+          <Button to="/stash">000000</Button>
         </nav>
 
-        <nav className="flex items-center gap-[var(--spacing-inner)] md:hidden">
+        <nav className={`${pillClass} inline-flex gap-[var(--spacing-inner)] p-1 md:hidden`}>
+          <Button to="/" iconOnly ariaLabel="Home" leftIcon={<img src={homeIcon} alt="" aria-hidden="true" />} />
           <Button
             to="/about"
             iconOnly
@@ -82,6 +71,12 @@ export default function Navbar() {
             iconOnly
             ariaLabel="Contact"
             leftIcon={<img src={contactIcon} alt="" aria-hidden="true" />}
+          />
+          <Button
+            to="/stash"
+            iconOnly
+            ariaLabel="000000"
+            leftIcon={<img src={stashIcon} alt="" aria-hidden="true" />}
           />
         </nav>
       </div>
