@@ -12,9 +12,7 @@ function scrollToFooter() {
 
 const navFrameClass = (isScrolled) =>
   `inline-flex items-center rounded-full transition-all duration-300 ${
-    isScrolled
-      ? 'border border-secondary/40 bg-container/60 backdrop-blur-md'
-      : 'bg-container'
+    isScrolled ? 'bg-container/60 backdrop-blur-md' : 'bg-container'
   }`
 
 export default function Navbar() {
