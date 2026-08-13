@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import logoDesktop from '@assets/logo/logo_desktop.svg'
 import logoMobile from '@assets/logo/logo_mobile.svg'
-import callMadeIcon from '@assets/Icons/Property 1=call_made.svg'
+import aboutIcon from '@assets/Icons/Property 1=face_5.svg'
+import contactIcon from '@assets/Icons/Property 1=chat_bubble.svg'
 import Button from './Button'
 
 function scrollToFooter() {
@@ -58,14 +59,30 @@ export default function Navbar() {
             className="block h-[25px] w-auto md:hidden"
           />
         </Link>
-        <nav className="flex items-center gap-8">
+
+        <nav className="hidden items-center gap-8 md:flex">
           <Button to="/about">About</Button>
           <Button
             onClick={handleContactClick}
-            rightIcon={<img src={callMadeIcon} alt="" aria-hidden="true" />}
+            rightIcon={<img src={contactIcon} alt="" aria-hidden="true" />}
           >
             Contact
           </Button>
+        </nav>
+
+        <nav className="flex items-center gap-[var(--spacing-inner)] md:hidden">
+          <Button
+            to="/about"
+            iconOnly
+            ariaLabel="About"
+            leftIcon={<img src={aboutIcon} alt="" aria-hidden="true" />}
+          />
+          <Button
+            onClick={handleContactClick}
+            iconOnly
+            ariaLabel="Contact"
+            leftIcon={<img src={contactIcon} alt="" aria-hidden="true" />}
+          />
         </nav>
       </div>
     </header>
