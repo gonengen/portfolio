@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import callMadeIcon from '@assets/Icons/Property 1=call_made.svg'
+import Icon from '../Icon'
 
 const caseStudies = [
   { id: 'secure-stay', title: 'Secure Stay', subtitle: 'AI Governance · ↓75% MTTR' },
@@ -28,11 +29,10 @@ export default function CaseStudyNavigation({ currentId }) {
                 <span className="text-primary"> · {study.subtitle}</span>
               </p>
             </div>
-            <img
+            <Icon
               src={callMadeIcon}
-              alt=""
-              aria-hidden="true"
-              className="size-6 shrink-0 opacity-70 transition-opacity group-hover:opacity-100"
+              tone="secondary"
+              className="size-6 opacity-70 transition-opacity group-hover:opacity-100"
             />
           </Link>
         ))}

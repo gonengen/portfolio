@@ -62,7 +62,7 @@ export default function Button({
   const content = (
     <>
       {leftIcon && (
-        <span className="inline-flex size-6 shrink-0 items-center justify-center text-primary [&_img]:size-6 [&_img]:dark-mode-invert [&_svg]:size-6">
+        <span className="inline-flex size-6 shrink-0 items-center justify-center [&_.icon]:size-6">
           {leftIcon}
         </span>
       )}
@@ -70,7 +70,7 @@ export default function Button({
         <span className={showUnderline ? labelClass : 'inline-block'}>{children}</span>
       )}
       {rightIcon && (
-        <span className="inline-flex size-6 shrink-0 items-center justify-center text-secondary transition-colors duration-300 group-hover:text-primary [&_img]:size-6 [&_img]:dark-mode-invert [&_svg]:size-6">
+        <span className="inline-flex size-6 shrink-0 items-center justify-center [&_.icon]:size-6">
           {rightIcon}
         </span>
       )}

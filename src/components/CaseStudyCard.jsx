@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import callMadeIcon from '@assets/Icons/Property 1=call_made.svg'
+import Icon from './Icon'
 
 export default function CaseStudyCard({ id, title, subtitle, tags, image }) {
   return (
@@ -26,11 +27,10 @@ export default function CaseStudyCard({ id, title, subtitle, tags, image }) {
             <p className="text-2xl font-light leading-[1.6] text-secondary">{tags}</p>
           </div>
 
-          <img
+          <Icon
             src={callMadeIcon}
-            alt=""
-            aria-hidden="true"
-            className="size-8 shrink-0 opacity-70 transition-opacity group-hover:opacity-100"
+            tone="secondary"
+            className="size-8 opacity-70 transition-opacity group-hover:opacity-100"
           />
         </div>
       </div>

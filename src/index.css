@@ -74,12 +74,4 @@
     font-family: var(--font-display);
     @apply text-[48px] font-thin leading-[1.6] max-lg:text-4xl max-md:text-3xl;
   }
-
-  .dark-mode-invert {
-    @apply transition-[filter] duration-300;
-  }
-
-  [data-theme='dark'] .dark-mode-invert {
-    filter: brightness(0) invert(1);
-  }
 }

@@ -7,6 +7,7 @@ import mediumIcon from '@assets/Icons/Property 1=medium.svg'
 import dribbbleIcon from '@assets/Icons/Property 1=dribbble.svg'
 import callMadeIcon from '@assets/Icons/Property 1=call_made.svg'
 import Button from './Button'
+import Icon from './Icon'
 
 const EMAIL = 'gonengen@gmail.com'
 
@@ -99,7 +100,7 @@ export default function Footer() {
           variant="outline"
           onClick={handleCopyEmail}
           className="lg:hidden"
-          leftIcon={<img src={mailIcon} alt="" aria-hidden="true" />}
+          leftIcon={<Icon src={mailIcon} />}
           ariaLabel="Copy email address"
         >
           {copied ? 'Copied!' : 'Copy Email'}
@@ -112,8 +113,8 @@ export default function Footer() {
             key={link.label}
             href={link.href}
             external
-            leftIcon={<img src={link.icon} alt="" aria-hidden="true" />}
-            rightIcon={<img src={callMadeIcon} alt="" aria-hidden="true" />}
+            leftIcon={<Icon src={link.icon} />}
+            rightIcon={<Icon src={callMadeIcon} tone="secondary" />}
           >
             {link.label}
           </Button>

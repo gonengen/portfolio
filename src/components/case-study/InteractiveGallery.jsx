@@ -3,6 +3,7 @@ import addIcon from '@assets/Icons/Property 1=add_2.svg'
 import removeIcon from '@assets/Icons/Property 1=remove.svg'
 import arrowLeftIcon from '@assets/Icons/Property 1=arrow_left_alt.svg'
 import arrowRightIcon from '@assets/Icons/Property 1=arrow_right_alt.svg'
+import Icon from '../Icon'
 
 const SLIDE_MS = 500
 const TRANSITION_EASE = 'cubic-bezier(0.4, 0, 0.2, 1)'
@@ -122,7 +123,7 @@ function GalleryPanel({
                 className="flex size-8 items-center justify-center rounded-full transition-opacity hover:opacity-80"
                 aria-label="Expand gallery"
               >
-                <img src={addIcon} alt="" aria-hidden="true" className="size-5 invert" />
+                <Icon src={addIcon} tone="white" className="size-5" />
               </button>
             )}
             <button
@@ -131,7 +132,7 @@ function GalleryPanel({
               className="flex size-8 items-center justify-center rounded-full transition-opacity hover:opacity-80"
               aria-label={isExpanded ? 'Close expanded gallery' : 'Reset gallery'}
             >
-              <img src={removeIcon} alt="" aria-hidden="true" className="size-5 invert" />
+              <Icon src={removeIcon} tone="white" className="size-5" />
             </button>
           </div>
         </header>
@@ -180,7 +181,7 @@ function GalleryPanel({
             className="absolute left-3 top-1/2 z-10 flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-black/50 backdrop-blur-sm transition-all duration-300 hover:bg-black/70 md:left-4 md:size-11"
             aria-label={`Previous slide: ${tabs[(activeIndex - 1 + tabs.length) % tabs.length]?.label}`}
           >
-            <img src={arrowLeftIcon} alt="" aria-hidden="true" className="size-5 invert" />
+            <Icon src={arrowLeftIcon} tone="white" className="size-5" />
           </button>
 
           <button
@@ -190,7 +191,7 @@ function GalleryPanel({
             className="absolute right-3 top-1/2 z-10 flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-black/50 backdrop-blur-sm transition-all duration-300 hover:bg-black/70 md:right-4 md:size-11"
             aria-label={`Next slide: ${tabs[(activeIndex + 1) % tabs.length]?.label}`}
           >
-            <img src={arrowRightIcon} alt="" aria-hidden="true" className="size-5 invert" />
+            <Icon src={arrowRightIcon} tone="white" className="size-5" />
           </button>
 
           <div

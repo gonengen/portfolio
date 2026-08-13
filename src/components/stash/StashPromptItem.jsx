@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Button from '../Button'
+import Icon from '../Icon'
 import copyIcon from '@assets/Icons/Property 1=content_copy.svg'
 
 export default function StashPromptItem({ label, description, prompt }) {
@@ -24,7 +25,7 @@ export default function StashPromptItem({ label, description, prompt }) {
 
       <Button
         fill
-        leftIcon={<img src={copyIcon} alt="" aria-hidden="true" />}
+        leftIcon={<Icon src={copyIcon} />}
         onClick={handleCopy}
         className="shrink-0"
         ariaLabel={copied ? 'Prompt copied to clipboard' : 'Copy prompt to clipboard'}

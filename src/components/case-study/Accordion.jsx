@@ -1,6 +1,7 @@
 import { useId, useState } from 'react'
 import addIcon from '@assets/Icons/Property 1=add_2.svg'
 import removeIcon from '@assets/Icons/Property 1=remove.svg'
+import Icon from '../Icon'
 
 const ACCORDION_TRANSITION = '600ms cubic-bezier(0.4, 0, 0.2, 1)'
 
@@ -45,11 +46,9 @@ export default function Accordion({ title, children, defaultOpen = false }) {
             {title}
           </span>
         </span>
-        <img
+        <Icon
           src={isOpen ? removeIcon : addIcon}
-          alt=""
-          aria-hidden="true"
-          className="size-8 shrink-0 motion-reduce:transition-none"
+          className="size-8 motion-reduce:transition-none"
           style={{ transition: `transform ${ACCORDION_TRANSITION}` }}
         />
       </button>

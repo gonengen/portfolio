@@ -2,6 +2,7 @@ import { useState } from 'react'
 import PageShell from '../components/PageShell'
 import PageHero from '../components/PageHero'
 import Button from '../components/Button'
+import Icon from '../components/Icon'
 import AboutInsightStack from '../components/AboutInsightStack'
 import aboutImage from '@assets/about/about_page_gig.png'
 import basketballIcon from '@assets/about/Illustration=basketball.png'
@@ -164,8 +165,8 @@ export default function About() {
             variant="split"
             href={resumePdf}
             external
-            leftIcon={<img src={resumeIcon} alt="" aria-hidden="true" />}
-            rightIcon={<img src={downloadIcon} alt="" aria-hidden="true" />}
+            leftIcon={<Icon src={resumeIcon} />}
+            rightIcon={<Icon src={downloadIcon} tone="secondary" />}
             className="flex-1"
           >
             Download resume
@@ -174,8 +175,8 @@ export default function About() {
             variant="split"
             href="https://www.linkedin.com/in/gonen-maatuk-5b2ab8380/"
             external
-            leftIcon={<img src={linkedinIcon} alt="" aria-hidden="true" />}
-            rightIcon={<img src={callMadeIcon} alt="" aria-hidden="true" />}
+            leftIcon={<Icon src={linkedinIcon} />}
+            rightIcon={<Icon src={callMadeIcon} tone="secondary" />}
             className="flex-1"
           >
             Let&apos;s chat

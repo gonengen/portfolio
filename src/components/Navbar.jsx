@@ -6,7 +6,7 @@ import contactIcon from '@assets/Icons/Property 1=chat_bubble.svg'
 import darkModeIcon from '@assets/Icons/Property 1=partly_cloudy_night.svg'
 import brightModeIcon from '@assets/Icons/Property 1=clear_day.svg'
 import Button from './Button'
-import NavIcon from './NavIcon'
+import Icon from './Icon'
 import { useTheme } from '../context/ThemeContext'
 
 function scrollToFooter() {
@@ -76,30 +76,25 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-[var(--spacing-inner)] p-2 md:hidden">
-            <Button
-              to="/"
-              iconOnly
-              ariaLabel="Home"
-              leftIcon={<NavIcon src={homeIcon} />}
-            />
+            <Button to="/" iconOnly ariaLabel="Home" leftIcon={<Icon src={homeIcon} />} />
             <Button
               to="/about"
               iconOnly
               ariaLabel="About"
-              leftIcon={<NavIcon src={aboutIcon} />}
+              leftIcon={<Icon src={aboutIcon} />}
             />
             <Button
               onClick={handleContactClick}
               iconOnly
               ariaLabel="Contact"
-              leftIcon={<NavIcon src={contactIcon} />}
+              leftIcon={<Icon src={contactIcon} />}
             />
             <Button
               type="button"
               iconOnly
               onClick={toggleTheme}
               ariaLabel={themeToggleAriaLabel}
-              leftIcon={<NavIcon src={themeToggleIcon} />}
+              leftIcon={<Icon src={themeToggleIcon} />}
             />
           </div>
         </nav>
