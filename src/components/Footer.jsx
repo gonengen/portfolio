@@ -96,7 +96,7 @@ export default function Footer() {
         </button>
 
         <Button
-          variant="bordered"
+          variant="outline"
           onClick={handleCopyEmail}
           className="lg:hidden"
           leftIcon={<img src={mailIcon} alt="" aria-hidden="true" />}
