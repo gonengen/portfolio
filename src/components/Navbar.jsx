@@ -55,7 +55,7 @@ export default function Navbar() {
           >
             Contact
           </Button>
-          <Button to="/stash">000000</Button>
+          <Button type="button">000000</Button>
         </nav>
 
         <nav className={`${pillClass} inline-flex gap-[var(--spacing-inner)] p-1 md:hidden`}>
@@ -73,7 +73,7 @@ export default function Navbar() {
             leftIcon={<img src={contactIcon} alt="" aria-hidden="true" />}
           />
           <Button
-            to="/stash"
+            type="button"
             iconOnly
             ariaLabel="000000"
             leftIcon={<img src={stashIcon} alt="" aria-hidden="true" />}
