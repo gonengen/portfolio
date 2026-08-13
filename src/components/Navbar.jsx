@@ -10,6 +10,8 @@ function scrollToFooter() {
   document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })
 }
 
+const navTextButtonClass = 'rounded-[var(--radius-lg)] px-4 py-2'
+
 export default function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
@@ -46,38 +48,48 @@ export default function Navbar() {
   return (
     <header id="site-nav" className="sticky top-0 z-50 w-full">
       <div className="mx-auto flex w-full max-w-[1440px] justify-center px-4 py-[var(--spacing-element-y)] md:px-8">
-        <nav className={`${pillClass} hidden md:inline-flex`}>
-          <Button to="/">Home</Button>
-          <Button to="/about">About</Button>
-          <Button
-            onClick={handleContactClick}
-            rightIcon={<img src={contactIcon} alt="" aria-hidden="true" />}
-          >
-            Contact
-          </Button>
-          <Button type="button">000000</Button>
-        </nav>
+        <nav className={pillClass}>
+          <div className="hidden items-center px-4 py-2 md:flex">
+            <Button to="/" className={navTextButtonClass}>
+              Home
+            </Button>
+            <Button to="/about" className={navTextButtonClass}>
+              About
+            </Button>
+            <Button onClick={handleContactClick} className={navTextButtonClass}>
+              Contact
+            </Button>
+            <Button type="button" className={navTextButtonClass}>
+              000000
+            </Button>
+          </div>
 
-        <nav className={`${pillClass} inline-flex gap-[var(--spacing-inner)] p-1 md:hidden`}>
-          <Button to="/" iconOnly ariaLabel="Home" leftIcon={<img src={homeIcon} alt="" aria-hidden="true" />} />
-          <Button
-            to="/about"
-            iconOnly
-            ariaLabel="About"
-            leftIcon={<img src={aboutIcon} alt="" aria-hidden="true" />}
-          />
-          <Button
-            onClick={handleContactClick}
-            iconOnly
-            ariaLabel="Contact"
-            leftIcon={<img src={contactIcon} alt="" aria-hidden="true" />}
-          />
-          <Button
-            type="button"
-            iconOnly
-            ariaLabel="000000"
-            leftIcon={<img src={stashIcon} alt="" aria-hidden="true" />}
-          />
+          <div className="flex items-center gap-[var(--spacing-inner)] p-2 md:hidden">
+            <Button
+              to="/"
+              iconOnly
+              ariaLabel="Home"
+              leftIcon={<img src={homeIcon} alt="" aria-hidden="true" />}
+            />
+            <Button
+              to="/about"
+              iconOnly
+              ariaLabel="About"
+              leftIcon={<img src={aboutIcon} alt="" aria-hidden="true" />}
+            />
+            <Button
+              onClick={handleContactClick}
+              iconOnly
+              ariaLabel="Contact"
+              leftIcon={<img src={contactIcon} alt="" aria-hidden="true" />}
+            />
+            <Button
+              type="button"
+              iconOnly
+              ariaLabel="000000"
+              leftIcon={<img src={stashIcon} alt="" aria-hidden="true" />}
+            />
+          </div>
         </nav>
       </div>
     </header>
