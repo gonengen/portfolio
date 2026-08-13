@@ -10,7 +10,12 @@ function scrollToFooter() {
   document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })
 }
 
-const navTextButtonClass = 'rounded-[var(--radius-lg)] px-4 py-2'
+const navFrameClass = (isScrolled) =>
+  `inline-flex items-center rounded-full transition-all duration-300 ${
+    isScrolled
+      ? 'border border-secondary/40 bg-container/60 backdrop-blur-md'
+      : 'bg-container'
+  }`
 
 export default function Navbar() {
   const location = useLocation()
@@ -39,27 +44,23 @@ export default function Navbar() {
     navigate('/#footer')
   }
 
-  const pillClass = `inline-flex items-center rounded-full transition-all duration-300 ${
-    isScrolled
-      ? 'border border-secondary/40 bg-container/60 backdrop-blur-md'
-      : 'bg-container'
-  }`
+  const pillClass = navFrameClass(isScrolled)
 
   return (
     <header id="site-nav" className="sticky top-0 z-50 w-full">
       <div className="mx-auto flex w-full max-w-[1440px] justify-center px-4 py-[var(--spacing-element-y)] md:px-8">
         <nav className={pillClass}>
-          <div className="hidden items-center px-4 py-2 md:flex">
-            <Button to="/" className={navTextButtonClass}>
+          <div className="hidden items-center gap-[var(--spacing-inner)] p-[var(--spacing-tight-x)] md:flex">
+            <Button fill to="/">
               Home
             </Button>
-            <Button to="/about" className={navTextButtonClass}>
+            <Button fill to="/about">
               About
             </Button>
-            <Button onClick={handleContactClick} className={navTextButtonClass}>
+            <Button fill onClick={handleContactClick}>
               Contact
             </Button>
-            <Button type="button" className={navTextButtonClass}>
+            <Button fill type="button">
               000000
             </Button>
           </div>
