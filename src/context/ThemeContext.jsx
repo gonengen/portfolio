@@ -10,7 +10,7 @@ function applyTheme(theme) {
   root.classList.add('theme-switching')
   window.setTimeout(() => {
     root.classList.remove('theme-switching')
-  }, 450)
+  }, 300)
 }
 
 export function getStoredTheme() {
