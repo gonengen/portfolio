@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom'
 const baseClass =
   'group inline-flex items-center gap-2 text-base font-semibold uppercase leading-none transition-all duration-300 ease-out motion-reduce:transition-none'
 
-const labelClass =
-  "relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out after:content-[''] group-hover:after:scale-x-100"
-
 function getSurfaceClass({ fill, outline, iconOnly, hasText }) {
   if (fill) {
     return iconOnly
@@ -53,7 +50,6 @@ export default function Button({
 }) {
   const outline = variant === 'outline' || variant === 'bordered' || variant === 'split'
   const hasText = Boolean(children) && !iconOnly
-  const showUnderline = hasText && !fill && !outline
 
   const surfaceClass = getSurfaceClass({ fill, outline, iconOnly, hasText })
   const layoutClass = getLayoutClass(variant, className)
@@ -66,9 +62,7 @@ export default function Button({
           {leftIcon}
         </span>
       )}
-      {hasText && (
-        <span className={showUnderline ? labelClass : 'inline-block'}>{children}</span>
-      )}
+      {hasText && <span className="inline-block">{children}</span>}
       {rightIcon && (
         <span className="inline-flex size-6 shrink-0 items-center justify-center [&_.icon]:size-6">
           {rightIcon}
