@@ -6,6 +6,7 @@ import contactIcon from '@assets/Icons/Property 1=chat_bubble.svg'
 import darkModeIcon from '@assets/Icons/Property 1=partly_cloudy_night.svg'
 import brightModeIcon from '@assets/Icons/Property 1=clear_day.svg'
 import Button from './Button'
+import HexThemeToggle from './HexThemeToggle'
 import Icon from './Icon'
 import { useTheme } from '../context/ThemeContext'
 
@@ -58,7 +59,6 @@ export default function Navbar() {
   }
 
   const pillClass = navFrameClass(isScrolled)
-  const themeToggleLabel = isDark ? 'FFFFFF' : '000000'
   const themeToggleIcon = isDark ? brightModeIcon : darkModeIcon
   const themeToggleAriaLabel = isDark ? 'Switch to bright mode' : 'Switch to dark mode'
 
@@ -76,14 +76,7 @@ export default function Navbar() {
             <Button fill={!isScrolled} onClick={handleContactClick}>
               Contact
             </Button>
-            <Button
-              fill={!isScrolled}
-              type="button"
-              onClick={toggleTheme}
-              ariaLabel={themeToggleAriaLabel}
-            >
-              {themeToggleLabel}
-            </Button>
+            <HexThemeToggle filled={!isScrolled} />
           </div>
 
           <div className="flex items-center gap-[var(--spacing-inner)] p-2 md:hidden">
