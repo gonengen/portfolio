@@ -99,7 +99,7 @@ export default function Footer() {
         <Button
           variant="outline"
           onClick={handleCopyEmail}
-          className="lg:hidden"
+          className="w-fit self-start lg:hidden"
           leftIcon={<Icon src={mailIcon} />}
           ariaLabel="Copy email address"
         >
@@ -107,7 +107,7 @@ export default function Footer() {
         </Button>
       </div>
 
-      <div className="flex w-full flex-wrap items-start justify-between gap-4">
+      <div className="flex w-full flex-col items-start gap-4 lg:flex-row lg:flex-wrap lg:gap-x-8 lg:gap-y-4">
         {socialLinks.map((link) => (
           <Button
             key={link.label}
