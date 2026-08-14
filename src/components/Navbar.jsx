@@ -13,6 +13,10 @@ function scrollToFooter() {
   document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })
 }
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
 const navFrameClass = (isScrolled) =>
   `inline-flex items-center rounded-full transition-all duration-300 ${
     isScrolled ? 'bg-container/60 backdrop-blur-md' : 'bg-container'
@@ -46,6 +50,13 @@ export default function Navbar() {
     navigate('/#footer')
   }
 
+  const handleSamePageNavClick = (path) => (event) => {
+    if (location.pathname !== path) return
+
+    event.preventDefault()
+    scrollToTop()
+  }
+
   const pillClass = navFrameClass(isScrolled)
   const themeToggleLabel = isDark ? 'FFFFFF' : '000000'
   const themeToggleIcon = isDark ? brightModeIcon : darkModeIcon
@@ -56,10 +67,10 @@ export default function Navbar() {
       <div className="mx-auto flex w-full max-w-[1440px] justify-center px-4 py-[var(--spacing-element-y)] md:px-8">
         <nav className={pillClass}>
           <div className="hidden items-center gap-[var(--spacing-inner)] p-[var(--spacing-tight-x)] md:flex">
-            <Button fill={!isScrolled} to="/">
+            <Button fill={!isScrolled} to="/" onClick={handleSamePageNavClick('/')}>
               Home
             </Button>
-            <Button fill={!isScrolled} to="/about">
+            <Button fill={!isScrolled} to="/about" onClick={handleSamePageNavClick('/about')}>
               About
             </Button>
             <Button fill={!isScrolled} onClick={handleContactClick}>
@@ -76,11 +87,18 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-[var(--spacing-inner)] p-2 md:hidden">
-            <Button to="/" iconOnly ariaLabel="Home" leftIcon={<Icon src={homeIcon} />} />
+            <Button
+              to="/"
+              iconOnly
+              ariaLabel="Home"
+              onClick={handleSamePageNavClick('/')}
+              leftIcon={<Icon src={homeIcon} />}
+            />
             <Button
               to="/about"
               iconOnly
               ariaLabel="About"
+              onClick={handleSamePageNavClick('/about')}
               leftIcon={<Icon src={aboutIcon} />}
             />
             <Button
