@@ -5,7 +5,12 @@ const STORAGE_KEY = 'gonenmaatuk-theme'
 export const ThemeContext = createContext(null)
 
 function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme
+  const root = document.documentElement
+  root.dataset.theme = theme
+  root.classList.add('theme-switching')
+  window.setTimeout(() => {
+    root.classList.remove('theme-switching')
+  }, 450)
 }
 
 export function getStoredTheme() {

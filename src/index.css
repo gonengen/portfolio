@@ -24,6 +24,8 @@
 
   --radius-lg: 16px;
   --radius-xl: 32px;
+
+  --theme-transition-duration: 450ms;
 }
 
 :root,
@@ -50,6 +52,17 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html.theme-switching,
+    html.theme-switching *,
+    html.theme-switching *::before,
+    html.theme-switching *::after {
+      transition-property: background-color, color, border-color, outline-color, fill, stroke;
+      transition-duration: var(--theme-transition-duration);
+      transition-timing-function: ease;
+    }
   }
 
   body {
