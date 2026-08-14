@@ -29,19 +29,23 @@ function ScrollToHash() {
 }
 
 function AppRoutes() {
+  const location = useLocation()
+
   return (
     <>
       <ScrollToTop />
       <ScrollToHash />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/stash" element={<Stash />} />
-        <Route path="/case-study/:id" element={<CaseStudyDetail />} />
-        <Route path="/work/robonote" element={<Navigate to="/case-study/robonote" replace />} />
-        <Route path="/work/easy" element={<Navigate to="/case-study/easy" replace />} />
-        <Route path="/work/secure-stay" element={<Navigate to="/case-study/secure-stay" replace />} />
-      </Routes>
+      <div key={location.pathname} className="page-transition">
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/stash" element={<Stash />} />
+          <Route path="/case-study/:id" element={<CaseStudyDetail />} />
+          <Route path="/work/robonote" element={<Navigate to="/case-study/robonote" replace />} />
+          <Route path="/work/easy" element={<Navigate to="/case-study/easy" replace />} />
+          <Route path="/work/secure-stay" element={<Navigate to="/case-study/secure-stay" replace />} />
+        </Routes>
+      </div>
     </>
   )
 }

@@ -26,6 +26,7 @@
   --radius-xl: 32px;
 
   --theme-transition-duration: 300ms;
+  --page-transition-duration: 300ms;
 }
 
 :root,
@@ -86,5 +87,25 @@
   .text-display-s {
     font-family: var(--font-display);
     @apply text-[48px] font-thin leading-[1.6] max-lg:text-4xl max-md:text-3xl;
+  }
+
+  .page-transition {
+    @apply min-h-screen w-full;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .page-transition {
+      animation: page-fade-in var(--page-transition-duration) ease forwards;
+    }
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
