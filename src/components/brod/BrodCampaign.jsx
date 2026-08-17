@@ -1,22 +1,22 @@
+import StickyCardStack from '../StickyCardStack'
 import CampaignCard from './CampaignCard'
 import { brodCampaignAds } from '../../data/brodCampaign'
 
 export default function BrodCampaign() {
   return (
-    <section
-      className="mx-auto flex w-full max-w-[960px] flex-col gap-[var(--spacing-section)]"
-      aria-label="Campaign"
-    >
-      {brodCampaignAds.map((ad) => (
+    <StickyCardStack
+      items={brodCampaignAds}
+      ariaLabel="Campaign"
+      getItemKey={(ad) => ad.id}
+      renderCard={(ad) => (
         <CampaignCard
-          key={ad.id}
           id={ad.id}
           strategy={ad.strategy}
           description={ad.description}
           image={ad.image}
           imageAlt={ad.imageAlt}
         />
-      ))}
-    </section>
+      )}
+    />
   )
 }
