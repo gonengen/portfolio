@@ -21,26 +21,30 @@ function HighlightParagraph({ text }) {
 export default function Brod() {
   return (
     <PageShell>
-      <article className="flex flex-col gap-[var(--spacing-section)]">
-        <HeroSection title={brodContent.title} />
+      <article className="flex min-w-0 flex-col gap-[var(--spacing-section)] overflow-x-clip">
+        <div className="min-w-0">
+          <HeroSection title={brodContent.title} />
+        </div>
 
-        <section className="mx-auto flex w-full max-w-[960px] flex-col gap-[var(--spacing-element-x)]">
+        <section className="mx-auto flex w-full min-w-0 max-w-[960px] flex-col gap-[var(--spacing-element-x)]">
           {brodContent.intro.map((paragraph) => (
             <HighlightParagraph key={paragraph.slice(0, 12)} text={paragraph} />
           ))}
         </section>
 
-        <section className="mx-auto w-full max-w-[960px]">
+        <section className="mx-auto w-full min-w-0 max-w-[960px]">
           <Accordion title={brodContent.accordion.title} defaultOpen={false}>
             <BrodBrandBook />
           </Accordion>
         </section>
 
-        <TextSection highlight={brodContent.iterations} />
+        <div className="min-w-0">
+          <TextSection highlight={brodContent.iterations} />
+        </div>
 
         <BrodCampaign />
 
-        <section className="mx-auto flex w-full max-w-[960px] flex-col gap-[var(--spacing-element-x)]">
+        <section className="mx-auto flex w-full min-w-0 max-w-[960px] flex-col gap-[var(--spacing-element-x)]">
           <HighlightParagraph text={brodContent.takeaway} />
           <div className="flex flex-col gap-1 text-2xl font-semibold leading-[1.44] tracking-[0.24px] text-primary">
             {brodContent.closing.map((line) => (

@@ -175,12 +175,12 @@ export default function StickyCardStack({
 
   return (
     <section
-      className={`relative mx-auto w-full ${maxWidthClass}`}
+      className={`relative mx-auto w-full min-w-0 ${maxWidthClass}`}
       aria-label={ariaLabel}
     >
       <div
         ref={containerRef}
-        className="grid w-full gap-y-6"
+        className="grid w-full min-w-0 gap-y-6"
         style={{
           gridTemplateRows: 'repeat(var(--cards-count, 1), var(--card-height, auto))',
         }}

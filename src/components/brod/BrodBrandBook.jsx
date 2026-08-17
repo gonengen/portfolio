@@ -25,7 +25,7 @@ function BrandBookGroup({ children }) {
 
 export default function BrodBrandBook() {
   return (
-    <div className="flex flex-col gap-[var(--spacing-element-x)]">
+    <div className="flex min-w-0 flex-col gap-[var(--spacing-element-x)]">
       <BrandBookGroup>
         <BrandBookHeading>BRØD — Brand System</BrandBookHeading>
         <BrandBookParagraph label="The audience.">
