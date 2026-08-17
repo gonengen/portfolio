@@ -1,6 +1,8 @@
-export default function CampaignCard({ id, strategy, description, image, imageAlt }) {
+export default function CampaignCard({ id, strategy, description, image, imageAlt, className = '' }) {
   return (
-    <article className="flex w-full flex-col gap-[var(--spacing-element-y)] rounded-[var(--radius-xl)] bg-container p-12 max-lg:p-6">
+    <article
+      className={`flex w-full flex-col gap-[var(--spacing-element-y)] rounded-[var(--radius-xl)] bg-container p-12 max-lg:p-6 ${className}`.trim()}
+    >
       <div className="flex w-full flex-col gap-[var(--spacing-element-y)] text-2xl font-medium leading-[1.44] tracking-[0.24px] text-secondary">
         <div className="flex items-center gap-[var(--spacing-element-x)] whitespace-nowrap">
           <p className="mb-0">{id}</p>

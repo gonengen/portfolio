@@ -16,6 +16,7 @@ export default function BrodCampaign() {
           description={ad.description}
           image={ad.image}
           imageAlt={ad.imageAlt}
+          className="shadow-[0_25px_50px_-12px_rgba(23,23,23,0.12)]"
         />
       )}
     />
