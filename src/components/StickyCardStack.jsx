@@ -35,6 +35,7 @@ export default function StickyCardStack({
   getItemKey = (item, index) => item.id ?? index,
   enableScrollEffects = false,
   stackStep = STACK_STEP,
+  maxWidthClass = 'max-w-[960px]',
   ariaLabel,
 }) {
   const containerRef = useRef(null)
@@ -130,7 +131,7 @@ export default function StickyCardStack({
 
   return (
     <section
-      className="relative mx-auto w-full max-w-[960px]"
+      className={`relative mx-auto w-full ${maxWidthClass}`}
       aria-label={ariaLabel}
     >
       <div

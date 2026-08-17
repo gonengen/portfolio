@@ -7,6 +7,7 @@ export default function BrodCampaign() {
     <StickyCardStack
       items={brodCampaignAds}
       stackStep={0}
+      maxWidthClass="max-w-[720px]"
       ariaLabel="Campaign"
       getItemKey={(ad) => ad.id}
       renderCard={(ad) => (
