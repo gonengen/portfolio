@@ -34,6 +34,7 @@ export default function StickyCardStack({
   renderCard,
   getItemKey = (item, index) => item.id ?? index,
   enableScrollEffects = false,
+  stackStep = STACK_STEP,
   ariaLabel,
 }) {
   const containerRef = useRef(null)
@@ -62,7 +63,7 @@ export default function StickyCardStack({
       container.style.setProperty('--card-height', `${innerHeight}px`)
 
       cards.forEach((card, index) => {
-        card.style.top = `${stickyTop + index * STACK_STEP}px`
+        card.style.top = `${stickyTop + index * stackStep}px`
         card.style.zIndex = String(index + 1)
       })
     }
@@ -87,7 +88,7 @@ export default function StickyCardStack({
         }
 
         const nextCard = cards[index + 1]
-        const offsetTop = stickyTop + index * STACK_STEP
+        const offsetTop = stickyTop + index * stackStep
         const offsetBottom = window.innerHeight - card.clientHeight
         const percentageY = getScrollPercentage(nextCard, offsetTop, offsetBottom)
         const toScale = 1 - (cards.length - 1 - index) * 0.1
@@ -125,7 +126,7 @@ export default function StickyCardStack({
       }
       window.removeEventListener('resize', updateLayout)
     }
-  }, [items, enableScrollEffects])
+  }, [items, enableScrollEffects, stackStep])
 
   return (
     <section

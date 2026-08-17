@@ -6,6 +6,7 @@ export default function BrodCampaign() {
   return (
     <StickyCardStack
       items={brodCampaignAds}
+      stackStep={0}
       ariaLabel="Campaign"
       getItemKey={(ad) => ad.id}
       renderCard={(ad) => (
