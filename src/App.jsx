@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Routes, Route, useLocation } from 'react-route
 import Home from './pages/Home'
 import About from './pages/About'
 import Stash from './pages/Stash'
+import Brod from './pages/Brod'
 import CaseStudyDetail from './pages/CaseStudyDetail'
 
 function ScrollToTop() {
@@ -40,6 +41,7 @@ function AppRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/stash" element={<Stash />} />
+          <Route path="/brod" element={<Brod />} />
           <Route path="/case-study/:id" element={<CaseStudyDetail />} />
           <Route path="/work/robonote" element={<Navigate to="/case-study/robonote" replace />} />
           <Route path="/work/easy" element={<Navigate to="/case-study/easy" replace />} />
