@@ -1,8 +1,7 @@
 export const brodContent = {
   title: 'I taught AI to make 47 ads × without losing the brand.',
-  context:
-    'The experiment. I built BRØD, a fictional Copenhagen bakery, to see if I could scale one brand into 47 strategically different ads — fast — without turning them into generic variations.',
   intro: [
+    'The experiment. I built BRØD, a fictional Copenhagen bakery, to see if I could scale one brand into 47 strategically different ads — fast — without turning them into generic variations.',
     'The brand. I started with hypothetical audience research and translated the insights into a name, logo, palette, typography, photography and voice. Every decision had a reason before it became a rule the machine could follow.',
     'The production. I built a controlled image library and added it to Figma as variants. For every ad, the agent received a strategy, copy and objective — then chose the image and execution within the brand system.',
   ],

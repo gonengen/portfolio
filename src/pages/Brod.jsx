@@ -22,7 +22,7 @@ export default function Brod() {
   return (
     <PageShell>
       <article className="flex flex-col gap-[var(--spacing-section)]">
-        <HeroSection title={brodContent.title} context={brodContent.context} />
+        <HeroSection title={brodContent.title} />
 
         <section className="mx-auto flex w-full max-w-[960px] flex-col gap-[var(--spacing-element-x)]">
           {brodContent.intro.map((paragraph) => (
