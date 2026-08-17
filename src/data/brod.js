@@ -8,7 +8,6 @@ export const brodContent = {
   ],
   accordion: {
     title: 'Behind the BRØD system',
-    placeholder: 'Brand book content will be added here.',
   },
   iterations:
     'The iterations. I started with 10, reviewed the output as an art director, and turned each failure into a rule for the next round. The campaign evolved through Desire → Ritual → Value → Identity → Action, while the system learned to make better decisions — from choosing the right image to staying recognizable without showing the product.',

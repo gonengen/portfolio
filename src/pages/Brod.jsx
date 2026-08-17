@@ -2,6 +2,7 @@ import PageShell from '../components/PageShell'
 import HeroSection from '../components/case-study/HeroSection'
 import TextSection from '../components/case-study/TextSection'
 import Accordion from '../components/case-study/Accordion'
+import BrodBrandBook from '../components/brod/BrodBrandBook'
 import { parseHighlight } from '../components/case-study/parseHighlight'
 import { brodContent } from '../data/brod'
 
@@ -30,7 +31,7 @@ export default function Brod() {
 
         <section className="mx-auto w-full max-w-[960px]">
           <Accordion title={brodContent.accordion.title} defaultOpen={false}>
-            <p>{brodContent.accordion.placeholder}</p>
+            <BrodBrandBook />
           </Accordion>
         </section>
 
