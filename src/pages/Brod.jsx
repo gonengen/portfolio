@@ -3,6 +3,7 @@ import HeroSection from '../components/case-study/HeroSection'
 import TextSection from '../components/case-study/TextSection'
 import Accordion from '../components/case-study/Accordion'
 import BrodBrandBook from '../components/brod/BrodBrandBook'
+import BrodCampaign from '../components/brod/BrodCampaign'
 import { parseHighlight } from '../components/case-study/parseHighlight'
 import { brodContent } from '../data/brod'
 
@@ -37,14 +38,7 @@ export default function Brod() {
 
         <TextSection highlight={brodContent.iterations} />
 
-        <section
-          className="mx-auto flex w-full max-w-[960px] flex-col items-start"
-          aria-label="Campaign"
-        >
-          <p className="text-xl font-light leading-[1.6] text-secondary">
-            Campaign — 47 ads (stacked scroll coming soon)
-          </p>
-        </section>
+        <BrodCampaign />
 
         <section className="mx-auto flex w-full max-w-[960px] flex-col gap-[var(--spacing-element-x)]">
           <HighlightParagraph text={brodContent.takeaway} />
