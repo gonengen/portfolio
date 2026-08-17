@@ -1,5 +1,5 @@
 export const brodContent = {
-  title: 'I taught AI to make 47 ads × without losing the brand.',
+  title: 'I taught AI to make 47 ads × within one consistent brand.',
   intro: [
     'The experiment. I built BRØD, a fictional Copenhagen bakery, to see if I could scale one brand into 47 strategically different ads — fast — without turning them into generic variations.',
     'The brand. I started with hypothetical audience research and translated the insights into a name, logo, palette, typography, photography and voice. Every decision had a reason before it became a rule the machine could follow.',
