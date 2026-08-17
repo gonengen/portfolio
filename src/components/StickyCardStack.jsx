@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const NAV_GAP = 64
 const STACK_STEP = 20
@@ -23,6 +23,19 @@ function getStickyTop() {
   return (nav?.offsetHeight ?? 0) + NAV_GAP
 }
 
+function getActiveCardIndex(cards) {
+  const stickyTop = getStickyTop()
+  let activeIndex = -1
+
+  cards.forEach((card, index) => {
+    if (card.getBoundingClientRect().top <= stickyTop + 1) {
+      activeIndex = index
+    }
+  })
+
+  return activeIndex
+}
+
 function getCardHeight(cards, inners) {
   const innerHeights = inners.map((inner) => inner?.offsetHeight ?? 0)
   const maxInnerHeight = innerHeights.length ? Math.max(...innerHeights) : 0
@@ -36,16 +49,47 @@ export default function StickyCardStack({
   enableScrollEffects = false,
   stackStep = STACK_STEP,
   maxWidthClass = 'max-w-[960px]',
+  activeCardShadow = false,
   ariaLabel,
 }) {
   const containerRef = useRef(null)
   const cardRefs = useRef([])
   const innerRefs = useRef([])
+  const [activeIndex, setActiveIndex] = useState(-1)
 
   useEffect(() => {
     cardRefs.current = cardRefs.current.slice(0, items.length)
     innerRefs.current = innerRefs.current.slice(0, items.length)
   }, [items.length])
+
+  useEffect(() => {
+    if (!activeCardShadow) return undefined
+
+    let rafId = 0
+
+    const updateActiveCard = () => {
+      const cards = cardRefs.current.filter(Boolean)
+      if (cards.length === 0) return
+
+      const nextActive = getActiveCardIndex(cards)
+      setActiveIndex((prev) => (prev !== nextActive ? nextActive : prev))
+    }
+
+    const onScroll = () => {
+      cancelAnimationFrame(rafId)
+      rafId = requestAnimationFrame(updateActiveCard)
+    }
+
+    updateActiveCard()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', updateActiveCard)
+
+    return () => {
+      cancelAnimationFrame(rafId)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', updateActiveCard)
+    }
+  }, [activeCardShadow, items.length])
 
   useEffect(() => {
     const container = containerRef.current
@@ -159,7 +203,9 @@ export default function StickyCardStack({
                   : undefined
               }
             >
-              {renderCard(item, index)}
+              {renderCard(item, index, {
+                isActive: !activeCardShadow || index === activeIndex,
+              })}
             </div>
           </div>
         ))}
