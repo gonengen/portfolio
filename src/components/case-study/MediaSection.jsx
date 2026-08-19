@@ -86,29 +86,40 @@ export default function MediaSection({
 
   if (variant === 'square') {
     const hasPerImageCaptions = images.some((image) => image.caption)
-    const gridCols =
-      images.length === 1 ? 'grid-cols-1' : 'grid-cols-2 max-md:grid-cols-1'
+    const isSingle = images.length === 1
+
+    const renderSquareUnit = (image, sectionCaption = null) => (
+      <div key={image.src} className="flex w-full flex-col gap-[var(--spacing-element-x)]">
+        <div className="w-full overflow-hidden rounded-2xl">
+          <img
+            src={image.src}
+            alt={image.alt}
+            className="block aspect-square w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        {(image.caption || sectionCaption) && (
+          <p className="w-full text-2xl font-light leading-[1.6] text-primary">
+            {image.caption || sectionCaption}
+          </p>
+        )}
+      </div>
+    )
+
+    if (isSingle) {
+      return (
+        <section className={`flex w-full flex-col gap-[var(--spacing-stack)] ${className}`}>
+          <div className="mx-auto flex w-full flex-col gap-[var(--spacing-element-x)] max-md:max-w-none md:w-[52%] md:max-w-[528px]">
+            {renderSquareUnit(images[0], caption)}
+          </div>
+        </section>
+      )
+    }
 
     return (
       <section className={`flex w-full flex-col gap-[var(--spacing-stack)] ${className}`}>
-        <div className={`grid w-full ${gridCols} gap-[var(--spacing-element-x)]`}>
-          {images.map((image) => (
-            <div key={image.src} className="flex w-full flex-col gap-[var(--spacing-element-x)]">
-              <div className="w-full overflow-hidden rounded-2xl">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="block aspect-square w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              {image.caption && (
-                <p className="mx-auto w-full max-w-[960px] text-2xl font-light leading-[1.6] text-primary">
-                  {image.caption}
-                </p>
-              )}
-            </div>
-          ))}
+        <div className="grid w-full grid-cols-2 gap-[var(--spacing-element-x)] max-md:grid-cols-1">
+          {images.map((image) => renderSquareUnit(image))}
         </div>
         {caption && !hasPerImageCaptions && (
           <p className="mx-auto w-full max-w-[960px] text-2xl font-light leading-[1.6] text-primary">
