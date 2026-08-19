@@ -1,22 +1,13 @@
-import heroImage from '@assets/robonote/Case Name=Robonote, Location=case atudy page.png'
-import roleViewImage from '@assets/robonote/robonote-solution-dashboard-overview-wide.png'
-import researchImage from '@assets/robonote/robonote-solution-dashboard-vp-wide.png'
-import principlesImage from '@assets/robonote/robonote-solution-dashboard-decision-level-wide.png'
+import heroImage from '@assets/robonote/robonote-hero-wide copy.png'
+import researchInsightImage from '@assets/robonote/robonote-solution-dashboard-decision-level-wide.png'
+import overviewImage from '@assets/robonote/robonote-solution-dashboard-overview-wide.png'
 import teamLeadImage from '@assets/robonote/robonote-solution-dashboard-team-lead-wide.png'
-import ceoImage from '@assets/robonote/robonote-solution-dashboard-ceo-wide.png'
 import vpImage from '@assets/robonote/robonote-solution-dashboard-vp-wide.png'
-import issueImage from '@assets/robonote/robonote-Issue-square.png'
-import statusImage from '@assets/robonote/robonote-status-square.png'
-import agentImage from '@assets/robonote/robonote-Agent Performance Overview-square.png'
-import goalsImage from '@assets/robonote/robonote-Departmental Goals-square.png'
-import executiveImage from '@assets/robonote/robonote-Executive Action Center-square.png'
-import salesImage from '@assets/robonote/robonote-Sales Review Coverage-square.png'
-import trendsImage from '@assets/robonote/robonote-Strategic Trends-square.png'
 import trendingImage from '@assets/robonote/robonote-Trending-square.png'
-import responsibilityFirstIcon from '@assets/robonote/Responsibility first.svg'
-import prioritiesOverMetricsIcon from '@assets/robonote/Priorities over metrics.svg'
-import evidenceBackedIcon from '@assets/robonote/Evidence-backed.svg'
-import familiarAlwaysLocalIcon from '@assets/robonote/Familiar, always local.svg'
+import executiveActionImage from '@assets/robonote/robonote-Executive Action Center-square.png'
+import goalsImage from '@assets/robonote/robonote-Departmental Goals-square.png'
+import strategicTrendsImage from '@assets/robonote/robonote-Strategic Trends-square.png'
+import agentPerformanceImage from '@assets/robonote/robonote-Agent Performance Overview-square.png'
 
 function splitParagraphs(text) {
   return text.split('\n\n').flatMap((part, index, all) => (index < all.length - 1 ? [part, ''] : [part]))
@@ -38,22 +29,12 @@ export const robonoteData = {
     {
       type: 'text',
       highlight:
-        "Context. Robonote turned millions of customer conversations into performance analytics for sales, support, operations, and compliance teams. Customers loved it in the demo — then struggled to find value on their own after onboarding.",
-    },
-    {
-      type: 'media',
-      variant: 'wide',
-      images: [{ src: roleViewImage, alt: 'Role view with decision-making questions' }],
+        'Context. Robonote turned millions of customer conversations into performance analytics. But after onboarding, customers landed in an event-heavy system full of tables, filters, and data — and were left to figure out what mattered on their own.',
     },
     {
       type: 'text',
       highlight:
-        'Problem Statement. I set out to redesign how organizations consume conversation intelligence — an experience where every decision-maker could see what needed attention in seconds, without abandoning the habits they’d already built around the product.',
-    },
-    {
-      type: 'media',
-      variant: 'wide',
-      images: [{ src: researchImage, alt: 'User research synthesis' }],
+        "The problem wasn't access to data. It was perspective. Users needed to understand what deserved attention, how different signals were connected, and what they were expected to do next.",
     },
     {
       type: 'text',
@@ -67,84 +48,106 @@ export const robonoteData = {
     {
       type: 'text',
       highlight:
-        'User Research. I expected different roles to ask for different features. Instead, I discovered every role was trying to answer a different business question.',
+        'Research. I expected different roles to need different features. Instead, I found that they were using the same organizational data to answer fundamentally different business questions.',
       body: {
         title: 'How did user research reshape the product?',
         paragraphs: userResearchParagraphs,
       },
     },
     {
-      type: 'text',
-      highlight:
-        'Key Insight. Better decisions begin with the right perspective. Every role needed the same organizational knowledge — just presented at a different level of abstraction.',
+      type: 'media',
+      variant: 'wide',
+      images: [{ src: researchInsightImage, alt: 'Decision-level dashboard framework by role' }],
+      caption:
+        'Choice · Split one product into three decision contexts. Why · Executives, VPs, and managers use the same organizational data for fundamentally different decisions. Result · Each role gets the context and level of detail needed for its next decision.',
     },
     {
-      type: 'principles',
-      intro:
-        'Design Principles. Every decision followed four principles that guided how conversation intelligence was structured for each role.',
-      principles: [
-        { title: 'Responsibility first', icon: responsibilityFirstIcon },
-        { title: 'Priorities over metrics', icon: prioritiesOverMetricsIcon },
-        { title: 'Evidence-backed', icon: evidenceBackedIcon },
-        { title: 'Familiar, always local', icon: familiarAlwaysLocalIcon },
-      ],
+      type: 'media',
+      variant: 'square',
+      images: [{ src: executiveActionImage, alt: 'Executive action center panel' }],
+      caption:
+        'Choice · Surfaced issues with urgency, ownership, and status. Why · Detecting a problem is only useful if users know what requires action next. Result · Insights become prioritized actions rather than passive reporting.',
+      className: '-mt-8 max-md:-mt-4',
+    },
+    {
+      type: 'text',
+      highlight:
+        'The Decision. We deliberately chose less flexibility. A single dashboard with role filters looked more flexible, but it created another decision for users to make. If a VP could switch into the CEO view, they would naturally wonder whether there was something there they were supposed to monitor. Instead, I designed a dedicated perspective for each level of responsibility. The product took responsibility for deciding what was relevant, rather than asking users to assemble the right view themselves.',
+    },
+    {
+      type: 'text',
+      highlight: 'Less choice meant clearer responsibility.',
     },
     {
       type: 'media',
       variant: 'wide',
-      images: [{ src: principlesImage, alt: 'Design principles framework' }],
+      images: [{ src: overviewImage, alt: 'Dashboard organized around role-specific questions' }],
+      caption:
+        'Choice · Organized the dashboard around decisions, not available data. Why · Users had plenty of information but lacked the context to know what mattered. Result · Each area answers a specific question instead of asking users to interpret raw signals.',
     },
     {
       type: 'text',
       highlight:
-        'Solution. I redesigned the platform around decision-making rather than information discovery — giving executives, department leaders, and managers each a view built around the question they actually needed answered.',
+        'Solution. I reorganized the entry point around the decisions each role was responsible for making — while keeping all three perspectives connected to the same underlying organizational knowledge.',
     },
     {
       type: 'media',
       variant: 'wide',
       images: [{ src: teamLeadImage, alt: 'Team lead operational dashboard' }],
       caption:
-        'For managers, I chose agent-level risk signals over an executive summary. Managers don’t need the company picture — they need to know exactly who to check in on before the shift ends. That choice turned browsing into same-day follow-up.',
+        'Choice · Connected performance signals directly to people and exceptions. Why · Managers needed to move quickly from “something changed” to “who needs attention.” Result · The dashboard turns organizational signals into immediate operational actions.',
     },
     {
       type: 'media',
-      variant: 'wide',
-      images: [{ src: ceoImage, alt: 'CEO strategic dashboard' }],
+      variant: 'square',
+      images: [{ src: agentPerformanceImage, alt: 'Agent performance overview panel' }],
       caption:
-        'For executives, I chose business-impact KPIs over a feed of AI system events. A CEO scanning the dashboard cares about revenue and churn, not how many conversations the model processed. Framing it that way turned a monitoring screen into a decision briefing.',
+        'Choice · Connected performance signals directly to people. Why · Managers needed to move from “something changed” to “who needs attention.” Result · Organizational signals become clear operational follow-up.',
+      className: '-mt-8 max-md:-mt-4',
     },
     {
       type: 'media',
       variant: 'wide',
       images: [{ src: vpImage, alt: 'VP regional dashboard' }],
       caption:
-        'For VPs, I kept the same underlying structure as the manager and executive views, but built it around region-to-region comparison. VPs think in gaps between teams, not absolute numbers, so the view had to make drift visible at a glance — and that’s what let them spot underperforming regions before quarterly review.',
-    },
-    {
-      type: 'text',
-      highlight:
-        'Usability Testing. Early demo reviews confirmed the new decision-making model — people understood it immediately. But they also kept scrolling, looking for something. It turned out to be the event stream they’d relied on for years, and its absence made the new dashboard feel unfamiliar even though it was clearer. Adding a compact event-based section gave people that anchor back, and adoption of the new structure followed right after.',
+        'Choice · Built the view around cross-team patterns rather than individual events. Why · VPs needed context to understand whether a signal was isolated or part of a broader pattern. Result · They can compare teams, connect trends, and decide where to investigate.',
+      className: '-mt-8 max-md:-mt-4',
     },
     {
       type: 'media',
       variant: 'square',
       images: [
-        { src: issueImage, alt: 'Issue detail panel' },
-        { src: statusImage, alt: 'Status overview panel' },
+        {
+          src: goalsImage,
+          alt: 'Departmental goals panel',
+          caption:
+            'Choice · Compared performance against explicit targets. Why · A percentage alone doesn\'t tell users whether performance is healthy or requires attention. Result · Every metric gains immediate decision context.',
+        },
+        {
+          src: strategicTrendsImage,
+          alt: 'Strategic trends panel',
+          caption:
+            'Choice · Added context directly to meaningful changes over time. Why · A spike or drop without explanation is just another data point. Result · Users can understand what changed and decide whether it deserves investigation.',
+        },
       ],
-    },
-    {
-      type: 'media',
-      variant: 'square',
-      images: [
-        { src: agentImage, alt: 'Agent performance panel' },
-        { src: goalsImage, alt: 'Departmental goals panel' },
-      ],
+      className: '-mt-8 max-md:-mt-4',
     },
     {
       type: 'text',
       highlight:
-        'Impact. The redesign reduced churn by 8%, cut post-demo drop-off by 6%, and increased dashboard-first entry by 22%. More than the numbers, customers stopped exploring conversation data and started making faster, more confident operational calls.',
+        'The Trade-off. The first version moved the cheese too far. Our first iteration removed the familiar event and category layer entirely. The new role-based dashboards were easier to understand, but testing revealed that users still looked for the event model they had relied on for years. Instead of returning to the old event-driven experience, we brought a compact set of familiar events and categories into the new dashboards. The result kept the clarity of the new decision model without removing the context users needed to trust it.',
+    },
+    {
+      type: 'media',
+      variant: 'square',
+      images: [{ src: trendingImage, alt: 'Trending events and categories panel' }],
+      caption:
+        "Testing revealed that clarity wasn't enough · Users still looked for the event categories they trusted. I brought those familiar signals back as context — without bringing back the table-first workflow.",
+    },
+    {
+      type: 'text',
+      highlight:
+        'Impact. The redesign reduced churn by 8%, cut post-demo drop-off by 6%, and increased dashboard-first entry by 22%. Users no longer had to begin by exploring the data — the product gave them a clear perspective on where to start.',
     },
     {
       type: 'impact',
@@ -155,25 +158,9 @@ export const robonoteData = {
       ],
     },
     {
-      type: 'media',
-      variant: 'square',
-      images: [
-        { src: executiveImage, alt: 'Executive action center panel' },
-        { src: salesImage, alt: 'Sales review coverage panel' },
-      ],
-    },
-    {
-      type: 'media',
-      variant: 'square',
-      images: [
-        { src: trendsImage, alt: 'Strategic trends panel' },
-        { src: trendingImage, alt: 'Trending panel' },
-      ],
-    },
-    {
       type: 'text',
       highlight:
-        'Reflection. This project changed how I think about enterprise dashboards. People rarely need more information — they need more clarity. Since Robonote, I approach every complex product the same way: design should shrink the effort required to decide, not grow the amount of information someone has to read first.',
+        'Reflection. This project changed how I think about enterprise dashboards. People rarely need more information. They need enough context to know what deserves their attention — and why they should trust it.',
     },
     {
       type: 'text',

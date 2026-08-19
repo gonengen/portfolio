@@ -24,6 +24,7 @@ function renderSection(section, index) {
           tags={section.tags}
           caption={section.caption}
           link={section.link}
+          className={section.className}
         />
       )
     case 'impact':

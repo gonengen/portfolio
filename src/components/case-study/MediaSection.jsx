@@ -21,6 +21,7 @@ export default function MediaSection({
   tags,
   caption,
   link,
+  className = '',
 }) {
   if (variant === 'showcase') {
     const bodyText = formatTags(description || caption, tags)
@@ -84,21 +85,32 @@ export default function MediaSection({
   }
 
   if (variant === 'square') {
+    const hasPerImageCaptions = images.some((image) => image.caption)
+    const gridCols =
+      images.length === 1 ? 'grid-cols-1' : 'grid-cols-2 max-md:grid-cols-1'
+
     return (
-      <section className="flex w-full flex-col gap-[var(--spacing-stack)]">
-        <div className="grid w-full grid-cols-2 gap-[var(--spacing-element-x)] max-md:grid-cols-1">
+      <section className={`flex w-full flex-col gap-[var(--spacing-stack)] ${className}`}>
+        <div className={`grid w-full ${gridCols} gap-[var(--spacing-element-x)]`}>
           {images.map((image) => (
-            <div key={image.src} className="w-full overflow-hidden rounded-2xl">
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="block aspect-square w-full object-cover"
-                loading="lazy"
-              />
+            <div key={image.src} className="flex w-full flex-col gap-[var(--spacing-element-x)]">
+              <div className="w-full overflow-hidden rounded-2xl">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="block aspect-square w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              {image.caption && (
+                <p className="mx-auto w-full max-w-[960px] text-2xl font-light leading-[1.6] text-primary">
+                  {image.caption}
+                </p>
+              )}
             </div>
           ))}
         </div>
-        {caption && (
+        {caption && !hasPerImageCaptions && (
           <p className="mx-auto w-full max-w-[960px] text-2xl font-light leading-[1.6] text-primary">
             {caption}
           </p>
@@ -108,7 +120,7 @@ export default function MediaSection({
   }
 
   return (
-    <section className="flex w-full flex-col gap-[var(--spacing-stack)]">
+    <section className={`flex w-full flex-col gap-[var(--spacing-stack)] ${className}`}>
       {images.map((image) => (
         <div key={image.src} className="w-full overflow-hidden rounded-2xl">
           <img
