@@ -1,13 +1,13 @@
-import heroImage from '@assets/robonote/robonote-hero-wide copy.png'
+import heroImage from '@assets/robonote/robonote-case_study-hero-wide.png'
 import researchInsightImage from '@assets/robonote/robonote-solution-dashboard-decision-level-wide.png'
 import overviewImage from '@assets/robonote/robonote-solution-dashboard-overview-wide.png'
 import teamLeadImage from '@assets/robonote/robonote-solution-dashboard-team-lead-wide.png'
 import vpImage from '@assets/robonote/robonote-solution-dashboard-vp-wide.png'
-import trendingImage from '@assets/robonote/robonote-Trending-square.png'
-import executiveActionImage from '@assets/robonote/robonote-Executive Action Center-square.png'
-import goalsImage from '@assets/robonote/robonote-Departmental Goals-square.png'
-import strategicTrendsImage from '@assets/robonote/robonote-Strategic Trends-square.png'
-import agentPerformanceImage from '@assets/robonote/robonote-Agent Performance Overview-square.png'
+import trendingImage from '@assets/robonote/robonote-Trendingl-wide.png'
+import executiveActionImage from '@assets/robonote/robonote-Executive Action Centerl-wide.png'
+import goalsImage from '@assets/robonote/robonote-Departmental Goals-wide.png'
+import strategicTrendsImage from '@assets/robonote/robonote-Strategic Trend-wide.png'
+import agentPerformanceImage from '@assets/robonote/robonote-Agent Performance Overview-wide.png'
 
 function splitParagraphs(text) {
   return text.split('\n\n').flatMap((part, index, all) => (index < all.length - 1 ? [part, ''] : [part]))
@@ -63,7 +63,7 @@ export const robonoteData = {
     },
     {
       type: 'media',
-      variant: 'square',
+      variant: 'wide',
       images: [{ src: executiveActionImage, alt: 'Executive action center panel' }],
       caption:
         'Choice · Surfaced issues with urgency, ownership, and status. Why · Detecting a problem is only useful if users know what requires action next. Result · Insights become prioritized actions rather than passive reporting.',
@@ -99,7 +99,7 @@ export const robonoteData = {
     },
     {
       type: 'media',
-      variant: 'square',
+      variant: 'wide',
       images: [{ src: agentPerformanceImage, alt: 'Agent performance overview panel' }],
       caption:
         'Choice · Connected performance signals directly to people. Why · Managers needed to move from “something changed” to “who needs attention.” Result · Organizational signals become clear operational follow-up.',
@@ -115,21 +115,18 @@ export const robonoteData = {
     },
     {
       type: 'media',
-      variant: 'square',
-      images: [
-        {
-          src: goalsImage,
-          alt: 'Departmental goals panel',
-          caption:
-            'Choice · Compared performance against explicit targets. Why · A percentage alone doesn\'t tell users whether performance is healthy or requires attention. Result · Every metric gains immediate decision context.',
-        },
-        {
-          src: strategicTrendsImage,
-          alt: 'Strategic trends panel',
-          caption:
-            'Choice · Added context directly to meaningful changes over time. Why · A spike or drop without explanation is just another data point. Result · Users can understand what changed and decide whether it deserves investigation.',
-        },
-      ],
+      variant: 'wide',
+      images: [{ src: goalsImage, alt: 'Departmental goals panel' }],
+      caption:
+        'Choice · Compared performance against explicit targets. Why · A percentage alone doesn\'t tell users whether performance is healthy or requires attention. Result · Every metric gains immediate decision context.',
+      className: '-mt-8 max-md:-mt-4',
+    },
+    {
+      type: 'media',
+      variant: 'wide',
+      images: [{ src: strategicTrendsImage, alt: 'Strategic trends panel' }],
+      caption:
+        'Choice · Added context directly to meaningful changes over time. Why · A spike or drop without explanation is just another data point. Result · Users can understand what changed and decide whether it deserves investigation.',
       className: '-mt-8 max-md:-mt-4',
     },
     {
@@ -139,7 +136,7 @@ export const robonoteData = {
     },
     {
       type: 'media',
-      variant: 'square',
+      variant: 'wide',
       images: [{ src: trendingImage, alt: 'Trending events and categories panel' }],
       caption:
         "Testing revealed that clarity wasn't enough · Users still looked for the event categories they trusted. I brought those familiar signals back as context — without bringing back the table-first workflow.",
