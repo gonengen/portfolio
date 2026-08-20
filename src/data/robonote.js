@@ -7,6 +7,7 @@ import trendingImage from '@assets/robonote/robonote-Trendingl-wide.png'
 import executiveActionImage from '@assets/robonote/robonote-Executive Action Centerl-wide.png'
 import goalsImage from '@assets/robonote/robonote-Departmental Goals-wide.png'
 import strategicTrendsImage from '@assets/robonote/robonote-Strategic Trend-wide.png'
+import relatedSignalImage from '@assets/robonote/robonote-Related Signal-wide.png'
 import agentPerformanceImage from '@assets/robonote/robonote-Agent Performance Overview-wide.png'
 
 function splitParagraphs(text) {
@@ -128,6 +129,18 @@ export const robonoteData = {
       caption:
         'Choice · Added context directly to meaningful changes over time. Why · A spike or drop without explanation is just another data point. Result · Users can understand what changed and decide whether it deserves investigation.',
       className: '-mt-8 max-md:-mt-4',
+    },
+    {
+      type: 'text',
+      highlight:
+        'Context changes the decision. Robonote could detect overlapping events across teams, agents, and time periods. Instead of exposing VPs to other departments’ dashboards, it surfaced relevant cross-functional signals inside their own view — adding the context needed to understand what a change might actually mean.',
+    },
+    {
+      type: 'media',
+      variant: 'wide',
+      images: [{ src: relatedSignalImage, alt: 'Related cross-functional signal panel' }],
+      caption:
+        'Choice · Surfaced relevant signals across departmental boundaries. Why · Role-specific dashboards shouldn\'t hide relationships that can change what an event means. Result · VPs get cross-functional context without having to search through other teams\' data.',
     },
     {
       type: 'text',
