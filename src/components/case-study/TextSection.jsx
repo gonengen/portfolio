@@ -10,14 +10,24 @@ export default function TextSection({ highlight, body }) {
         <span className="text-secondary">{label}</span>
         {highlightBody ? ` ${highlightBody}` : ''}
       </p>
-      {body && (
-        <Accordion title={body.title}>
+      {body?.hideAccordion ? (
+        <div className="flex flex-col gap-[var(--spacing-element-x)]">
           {body.paragraphs.map((paragraph) => (
-            <p key={paragraph} className={paragraph ? 'mb-0' : 'mb-0 min-h-[1.6em]'}>
+            <p key={paragraph} className="text-2xl font-light leading-[1.6] text-secondary">
               {paragraph}
             </p>
           ))}
-        </Accordion>
+        </div>
+      ) : (
+        body && (
+          <Accordion title={body.title}>
+            {body.paragraphs.map((paragraph) => (
+              <p key={paragraph} className={paragraph ? 'mb-0' : 'mb-0 min-h-[1.6em]'}>
+                {paragraph}
+              </p>
+            ))}
+          </Accordion>
+        )
       )}
     </section>
   )

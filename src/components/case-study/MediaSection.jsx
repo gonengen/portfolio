@@ -13,6 +13,43 @@ function formatTags(description, tags) {
   return description || ''
 }
 
+function MediaCaption({ text, className = 'mx-auto w-full max-w-[960px]' }) {
+  const baseClass = `${className} text-2xl font-light leading-[1.6] text-primary`
+
+  if (!text || !text.includes(' × ')) {
+    return <p className={baseClass}>{text}</p>
+  }
+
+  const segments = text.split(' × ')
+
+  return (
+    <p className={baseClass}>
+      {segments.map((segment, index) => {
+        const separatorIndex = segment.indexOf(' · ')
+        if (separatorIndex === -1) {
+          return (
+            <span key={segment}>
+              {index > 0 && <span className="text-secondary"> × </span>}
+              {segment}
+            </span>
+          )
+        }
+
+        const label = segment.slice(0, separatorIndex + 3)
+        const content = segment.slice(separatorIndex + 3)
+
+        return (
+          <span key={segment}>
+            {index > 0 && <span className="text-secondary"> × </span>}
+            <span className="text-secondary">{label}</span>
+            {content}
+          </span>
+        )
+      })}
+    </p>
+  )
+}
+
 export default function MediaSection({
   variant = 'wide',
   images = [],
@@ -99,9 +136,7 @@ export default function MediaSection({
           />
         </div>
         {(image.caption || sectionCaption) && (
-          <p className="w-full text-2xl font-light leading-[1.6] text-primary">
-            {image.caption || sectionCaption}
-          </p>
+          <MediaCaption text={image.caption || sectionCaption} className="w-full" />
         )}
       </div>
     )
@@ -121,11 +156,7 @@ export default function MediaSection({
         <div className="grid w-full grid-cols-2 gap-[var(--spacing-element-x)] max-md:grid-cols-1">
           {images.map((image) => renderSquareUnit(image))}
         </div>
-        {caption && !hasPerImageCaptions && (
-          <p className="mx-auto w-full max-w-[960px] text-2xl font-light leading-[1.6] text-primary">
-            {caption}
-          </p>
-        )}
+        {caption && !hasPerImageCaptions && <MediaCaption text={caption} />}
       </section>
     )
   }
@@ -142,11 +173,7 @@ export default function MediaSection({
           />
         </div>
       ))}
-      {caption && (
-        <p className="mx-auto w-full max-w-[960px] text-2xl font-light leading-[1.6] text-primary">
-          {caption}
-        </p>
-      )}
+      {caption && <MediaCaption text={caption} />}
     </section>
   )
 }
