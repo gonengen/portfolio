@@ -81,12 +81,13 @@
 
 @layer utilities {
   .text-display {
-    font-family: var(--font-display);
+    font-family: var(--font-sans);
+    @apply font-extralight;
   }
 
   .text-display-s {
-    font-family: var(--font-display);
-    @apply text-[48px] font-thin leading-[1.6] max-lg:text-4xl max-md:text-3xl;
+    font-family: var(--font-sans);
+    @apply text-[48px] font-extralight leading-[1.6] max-lg:text-4xl max-md:text-3xl;
   }
 
   .page-transition {

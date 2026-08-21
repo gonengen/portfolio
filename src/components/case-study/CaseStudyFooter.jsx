@@ -9,7 +9,7 @@ const socialLinks = [
 export default function CaseStudyFooter() {
   return (
     <footer className="flex w-full flex-col items-start gap-[var(--spacing-stack)] px-[var(--spacing-element-x)] py-[var(--spacing-element-y)]">
-      <p className="text-display max-w-[960px] text-[128px] font-thin leading-none tracking-[-2.56px] text-ink max-lg:text-7xl max-md:text-5xl">
+      <p className="text-display max-w-[960px] text-[128px] leading-none tracking-[-2.56px] text-ink max-lg:text-7xl max-md:text-5xl">
         GONEN MAATUK@AI
       </p>
       <a

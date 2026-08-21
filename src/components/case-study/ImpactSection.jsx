@@ -2,7 +2,7 @@ function ImpactCard({ value, suffix = '%', label }) {
   return (
     <div className="flex shrink-0 flex-col items-start gap-[var(--spacing-inner)]">
       <div className="flex items-end gap-[var(--spacing-inner)]">
-        <p className="text-display text-[128px] font-thin leading-none tracking-[-2.56px] text-primary max-lg:text-7xl max-md:text-6xl">
+        <p className="text-display text-[128px] leading-none tracking-[-2.56px] text-primary max-lg:text-7xl max-md:text-6xl">
           {value}
         </p>
         {suffix && <p className="text-display-s text-primary">{suffix}</p>}

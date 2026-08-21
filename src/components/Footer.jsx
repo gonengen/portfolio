@@ -58,14 +58,14 @@ export default function Footer() {
       className="flex w-full flex-col gap-[var(--spacing-stack)] border-t border-secondary py-[var(--spacing-stack)]"
     >
       <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start">
-        <p className="text-display flex-1 text-[128px] font-thin leading-none tracking-[-2.56px] text-primary max-lg:text-7xl max-md:text-5xl lg:hidden">
+        <p className="text-display flex-1 text-[128px] leading-none tracking-[-2.56px] text-primary max-lg:text-7xl max-md:text-5xl lg:hidden">
           GONEN MAATUK@AI
         </p>
 
         <button
           type="button"
           onClick={handleCopyEmail}
-          className="group hidden w-full max-w-[1040px] cursor-pointer text-left text-display text-[128px] font-thin leading-none tracking-[-2.56px] text-primary lg:block"
+          className="group hidden w-full max-w-[1040px] cursor-pointer text-left text-display text-[128px] leading-none tracking-[-2.56px] text-primary lg:block"
           aria-label={copied ? 'Email copied to clipboard' : 'Copy email address'}
         >
           <span className="grid min-h-[1em] [grid-template-areas:'stack']">
