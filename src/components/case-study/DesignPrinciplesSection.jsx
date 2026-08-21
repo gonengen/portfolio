@@ -1,7 +1,9 @@
-export default function DesignPrinciplesSection({ intro, principles = [] }) {
-  const { label, body } = intro
-    ? parseIntro(intro)
-    : { label: 'Design Principles.', body: '' }
+export default function DesignPrinciplesSection({ intro, principles = [], hideIntro = false }) {
+  const { label, body } = hideIntro
+    ? { label: '', body: '' }
+    : intro
+      ? parseIntro(intro)
+      : { label: 'Design Principles.', body: '' }
 
   return (
     <section className="flex w-full flex-col gap-[var(--spacing-element-x)]">

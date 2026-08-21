@@ -54,6 +54,7 @@ function renderSection(section, index, caseStudyId) {
           key={index}
           intro={section.intro}
           principles={section.principles}
+          hideIntro={section.hideIntro}
         />
       )
     case 'metadata':

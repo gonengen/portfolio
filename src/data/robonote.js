@@ -9,6 +9,10 @@ import goalsImage from '@assets/robonote/robonote-Departmental Goals-wide.png'
 import strategicTrendsImage from '@assets/robonote/robonote-Strategic Trend-wide.png'
 import relatedSignalImage from '@assets/robonote/robonote-Related Signal-wide.png'
 import agentPerformanceImage from '@assets/robonote/robonote-Agent Performance Overview-wide.png'
+import responsibilityFirstIcon from '@assets/robonote/Responsibility first.svg'
+import prioritiesOverMetricsIcon from '@assets/robonote/Priorities over metrics.svg'
+import evidenceBackedIcon from '@assets/robonote/Evidence-backed.svg'
+import familiarAlwaysLocalIcon from '@assets/robonote/Familiar, always local.svg'
 
 function splitParagraphs(text) {
   return text.split('\n\n').flatMap((part, index, all) => (index < all.length - 1 ? [part, ''] : [part]))
@@ -80,16 +84,31 @@ export const robonoteData = {
       highlight: 'Less choice meant clearer responsibility.',
     },
     {
-      type: 'media',
-      variant: 'wide',
-      images: [{ src: overviewImage, alt: 'Dashboard organized around role-specific questions' }],
-      caption:
-        'Role-specific questions × Decision · Organized the dashboard around business questions. × Reason · Users needed direction, not more data. × Result · Each area made its purpose immediately clear.',
+      type: 'text',
+      highlight:
+        'Principles. That decision became four principles for the redesign: organize information around responsibility, surface priorities before metrics, connect signals to supporting evidence, and introduce new workflows through familiar patterns.',
+    },
+    {
+      type: 'principles',
+      hideIntro: true,
+      principles: [
+        { title: 'Responsibility first', icon: responsibilityFirstIcon },
+        { title: 'Priorities over metrics', icon: prioritiesOverMetricsIcon },
+        { title: 'Evidence-backed', icon: evidenceBackedIcon },
+        { title: 'Familiar, always local', icon: familiarAlwaysLocalIcon },
+      ],
     },
     {
       type: 'text',
       highlight:
         'Solution. I reorganized the entry point around the decisions each role was responsible for making, while keeping every perspective connected to the same underlying organizational knowledge.',
+    },
+    {
+      type: 'media',
+      variant: 'wide',
+      images: [{ src: overviewImage, alt: 'Dashboard organized around role-specific questions' }],
+      caption:
+        'Role-specific questions × Decision · Organized the dashboard around business questions. × Reason · Users needed direction, not more data. × Result · Each area made its purpose immediately clear.',
     },
     {
       type: 'media',
