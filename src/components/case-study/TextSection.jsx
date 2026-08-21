@@ -1,12 +1,13 @@
 import Accordion from './Accordion'
 import { parseHighlight } from './parseHighlight'
 
-export default function TextSection({ highlight, body }) {
+export default function TextSection({ highlight, body, compactMobileTypography = false }) {
   const { label, body: highlightBody } = parseHighlight(highlight)
+  const textSizeClass = compactMobileTypography ? 'text-2xl max-md:text-xl' : 'text-2xl'
 
   return (
     <section className="mx-auto flex w-full max-w-[960px] flex-col gap-[var(--spacing-element-x)]">
-      <p className="text-2xl font-semibold leading-[1.44] tracking-[0.24px] text-primary">
+      <p className={`${textSizeClass} font-semibold leading-[1.44] tracking-[0.24px] text-primary`}>
         <span className="text-secondary">{label}</span>
         {highlightBody ? ` ${highlightBody}` : ''}
       </p>

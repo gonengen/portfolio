@@ -9,10 +9,19 @@ import InteractiveGallery from './InteractiveGallery'
 import DesignPrinciplesSection from './DesignPrinciplesSection'
 import CaseStudyNavigation from './CaseStudyNavigation'
 
-function renderSection(section, index) {
+function renderSection(section, index, caseStudyId) {
+  const isRobonote = caseStudyId === 'robonote'
+
   switch (section.type) {
     case 'text':
-      return <TextSection key={index} highlight={section.highlight} body={section.body} />
+      return (
+        <TextSection
+          key={index}
+          highlight={section.highlight}
+          body={section.body}
+          compactMobileTypography={isRobonote}
+        />
+      )
     case 'media':
       return (
         <MediaSection
@@ -25,6 +34,7 @@ function renderSection(section, index) {
           caption={section.caption}
           link={section.link}
           className={section.className}
+          captionVariant={isRobonote ? 'robonote' : 'default'}
         />
       )
     case 'impact':
@@ -65,7 +75,7 @@ export default function CaseStudyPage({ data, caseStudyId }) {
           heroImageAlt={data.heroImageAlt}
         />
         <div className="flex flex-col gap-[var(--spacing-section)]">
-          {data.sections.map(renderSection)}
+          {data.sections.map((section, index) => renderSection(section, index, caseStudyId))}
           {caseStudyId && <CaseStudyNavigation currentId={caseStudyId} />}
         </div>
         <Footer />

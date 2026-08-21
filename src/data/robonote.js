@@ -30,12 +30,6 @@ export const robonoteHiddenAccordions = {
   },
 }
 
-const frameworkProfileParagraphs = [
-  'The Executive (CEO level). Needs a single, trustworthy signal of organizational direction. Has no patience for raw data and no time for interpretation. If the system requires effort to extract meaning, it won\'t get used.',
-  'The Strategist (VP level). Lives in comparisons and trends. Needs to see patterns across teams, departments, and time periods — and needs to be able to bring that analysis into a conversation without building it from scratch.',
-  'The Operator (Manager level). Closest to the day-to-day. Needs evidence that\'s specific enough to act on — not "sales calls are down" but "these three reps are struggling with this specific objection." Immediacy and specificity matter more than breadth.',
-]
-
 export const robonoteData = {
   title: 'Robonote × Rebuilding the entry-point cut customer churn by 8%',
   heroImage,
@@ -60,24 +54,20 @@ export const robonoteData = {
       type: 'text',
       highlight:
         'Framework. I translated the research into three decision profiles — each defined by a different time horizon, relationship to data, and definition of what was useful.',
-      body: {
-        hideAccordion: true,
-        paragraphs: frameworkProfileParagraphs,
-      },
     },
     {
       type: 'media',
       variant: 'wide',
       images: [{ src: researchInsightImage, alt: 'Decision-level dashboard framework by role' }],
       caption:
-        'Decision · Split the product into three decision contexts. × Reason · Each role used the same data for different decisions. × Result · Each level received the context relevant to its responsibility.',
+        'Three decision contexts × Decision · Split the product by responsibility. × Reason · Each role used the same data for different decisions. × Result · Each level received the context relevant to its responsibility.',
     },
     {
       type: 'media',
       variant: 'wide',
       images: [{ src: executiveActionImage, alt: 'Executive action center panel' }],
       caption:
-        'Decision · Added urgency, ownership, and status to issues. × Reason · Detecting a problem wasn\'t enough to drive action. × Result · Signals became a prioritized action queue.',
+        'Executive action center × Decision · Added urgency, ownership, and status to issues. × Reason · Detecting a problem wasn\'t enough to drive action. × Result · Signals became a prioritized action queue.',
       className: '-mt-8 max-md:-mt-4',
     },
     {
@@ -94,7 +84,7 @@ export const robonoteData = {
       variant: 'wide',
       images: [{ src: overviewImage, alt: 'Dashboard organized around role-specific questions' }],
       caption:
-        'Decision · Organized the dashboard around business questions. × Reason · Users needed direction, not more data. × Result · Each area made its purpose immediately clear.',
+        'Role-specific questions × Decision · Organized the dashboard around business questions. × Reason · Users needed direction, not more data. × Result · Each area made its purpose immediately clear.',
     },
     {
       type: 'text',
@@ -106,14 +96,14 @@ export const robonoteData = {
       variant: 'wide',
       images: [{ src: teamLeadImage, alt: 'Team lead operational dashboard' }],
       caption:
-        'Decision · Connected signals directly to people and exceptions. × Reason · Managers needed to know who required attention. × Result · Insights translated directly into follow-up.',
+        'Team manager view × Decision · Connected signals directly to people and exceptions. × Reason · Managers needed to know who required attention. × Result · Insights translated directly into follow-up.',
     },
     {
       type: 'media',
       variant: 'wide',
       images: [{ src: agentPerformanceImage, alt: 'Agent performance overview panel' }],
       caption:
-        'Decision · Connected performance changes to specific agents. × Reason · Managers needed actionable evidence. × Result · Team-level signals became individual follow-up.',
+        'Agent performance × Decision · Connected performance changes to specific agents. × Reason · Managers needed actionable evidence. × Result · Team-level signals became individual follow-up.',
       className: '-mt-8 max-md:-mt-4',
     },
     {
@@ -121,7 +111,7 @@ export const robonoteData = {
       variant: 'wide',
       images: [{ src: vpImage, alt: 'VP regional dashboard' }],
       caption:
-        'Decision · Organized the view around cross-team patterns. × Reason · VPs needed to distinguish isolated events from broader trends. × Result · Comparisons pointed directly to areas worth investigating.',
+        'VP strategic view × Decision · Organized the view around cross-team patterns. × Reason · VPs needed to distinguish isolated events from broader trends. × Result · Comparisons pointed to areas worth investigating.',
       className: '-mt-8 max-md:-mt-4',
     },
     {
@@ -129,7 +119,7 @@ export const robonoteData = {
       variant: 'wide',
       images: [{ src: goalsImage, alt: 'Departmental goals panel' }],
       caption:
-        'Decision · Compared performance against explicit targets. × Reason · Percentages need a benchmark to have meaning. × Result · Performance became immediately interpretable.',
+        'Departmental goals × Decision · Compared performance against explicit targets. × Reason · Percentages need a benchmark to have meaning. × Result · Performance became immediately interpretable.',
       className: '-mt-8 max-md:-mt-4',
     },
     {
@@ -137,7 +127,7 @@ export const robonoteData = {
       variant: 'wide',
       images: [{ src: strategicTrendsImage, alt: 'Strategic trends panel' }],
       caption:
-        'Decision · Attached context to meaningful changes over time. × Reason · Spikes and drops alone don\'t explain what happened. × Result · Trends became starting points for investigation.',
+        'Strategic trends × Decision · Attached context to meaningful changes over time. × Reason · Spikes and drops alone don\'t explain what happened. × Result · Trends became starting points for investigation.',
       className: '-mt-8 max-md:-mt-4',
     },
     {
@@ -150,7 +140,7 @@ export const robonoteData = {
       variant: 'wide',
       images: [{ src: relatedSignalImage, alt: 'Related cross-functional signal panel' }],
       caption:
-        'Decision · Surfaced relevant signals across departments. × Reason · Cross-functional relationships can change what an event means. × Result · VPs gained context without leaving their own view.',
+        'Related signals × Decision · Surfaced relevant signals across departments. × Reason · Cross-functional relationships can change what an event means. × Result · VPs gained context without leaving their own view.',
     },
     {
       type: 'text',
@@ -162,7 +152,7 @@ export const robonoteData = {
       variant: 'wide',
       images: [{ src: trendingImage, alt: 'Trending events and categories panel' }],
       caption:
-        'Testing · Users still looked for familiar event categories. × Iteration · I brought those signals back as context without restoring the table-first workflow.',
+        'Trending events × Testing · Users still looked for familiar event categories. × Iteration · I brought those signals back as context without restoring the table-first workflow.',
     },
     {
       type: 'text',

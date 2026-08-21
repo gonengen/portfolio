@@ -13,8 +13,11 @@ function formatTags(description, tags) {
   return description || ''
 }
 
-function MediaCaption({ text, className = 'mx-auto w-full max-w-[960px]' }) {
-  const baseClass = `${className} text-2xl font-light leading-[1.6] text-primary`
+function MediaCaption({ text, className = 'mx-auto w-full max-w-[960px]', variant = 'default' }) {
+  const baseClass =
+    variant === 'robonote'
+      ? `${className} text-xl max-md:text-base font-light leading-[1.6] text-primary`
+      : `${className} text-2xl font-light leading-[1.6] text-primary`
 
   if (!text || !text.includes(' × ')) {
     return <p className={baseClass}>{text}</p>
@@ -59,6 +62,7 @@ export default function MediaSection({
   caption,
   link,
   className = '',
+  captionVariant = 'default',
 }) {
   if (variant === 'showcase') {
     const bodyText = formatTags(description || caption, tags)
@@ -162,18 +166,32 @@ export default function MediaSection({
   }
 
   return (
-    <section className={`flex w-full flex-col gap-[var(--spacing-stack)] ${className}`}>
-      {images.map((image) => (
-        <div key={image.src} className="w-full overflow-hidden rounded-2xl">
-          <img
-            src={image.src}
-            alt={image.alt}
-            className="block w-full h-auto object-cover"
-            loading="lazy"
+    <section className={className}>
+      <div
+        className={
+          captionVariant === 'robonote'
+            ? 'flex w-full flex-col gap-4 max-md:gap-2'
+            : 'flex w-full flex-col gap-[var(--spacing-stack)]'
+        }
+      >
+        {images.map((image) => (
+          <div key={image.src} className="w-full overflow-hidden rounded-2xl">
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="block w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
+        ))}
+        {caption && (
+          <MediaCaption
+            text={caption}
+            variant={captionVariant}
+            className={captionVariant === 'robonote' ? 'w-full' : 'mx-auto w-full max-w-[960px]'}
           />
-        </div>
-      ))}
-      {caption && <MediaCaption text={caption} />}
+        )}
+      </div>
     </section>
   )
 }
