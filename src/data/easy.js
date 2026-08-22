@@ -18,13 +18,21 @@ function splitParagraphs(text) {
   return text.split('\n\n').flatMap((part, index, all) => (index < all.length - 1 ? [part, ''] : [part]))
 }
 
-const marketResearchParagraphs = splitParagraphs(
-  "The signal wasn't coming from one direction. Customer Success was hearing frustration from users who felt the platform wasn't delivering on its promise. Business owners were expressing the same thing from the other side — they were offering real value and watching it go unclaimed. Merchant roundtables confirmed it independently. Discounts were everywhere on the platform and creating value for almost no one. That convergence across three separate sources gave me confidence that this wasn't an edge case — it was a structural problem worth solving properly.",
-)
-
-const userResearchParagraphs = splitParagraphs(
-  "Across interviews, surveys, behavioral analysis, and journey mapping, one pattern kept repeating at the moment of decision. Users weren't leaving because the offer wasn't good enough. They were hesitating right before claiming it — and that hesitation had a consistent source. They didn't know how redemption worked. They weren't sure what happened after purchase. They suspected hidden conditions might be waiting for them at the register.\n\nThe coupon's value was never in question. The confidence to use it was. Uncertainty, it turned out, had a far greater impact on behavior than price ever did.\n\nPersonas\n\nThe research produced two distinct behavioral profiles — not defined by demographics, but by their relationship with uncertainty and trust in the redemption process.\n\nThe Cautious Claimer. Engages with offers regularly but abandons at the point of commitment. Not price-sensitive — risk-sensitive. Needs to understand exactly what happens after they tap \"claim\" before they're willing to do it. One unexpected condition at the register is enough to erode trust entirely.\n\nThe Business Owner. Publishing offers with genuine intent but losing confidence in the platform when redemption stays low. Doesn't know if the problem is the offer itself, the placement, or something upstream in the user experience. Needs visibility into what's happening between publish and redemption.",
-)
+// Preserved for future editorial deep dives (accordions hidden on page)
+export const easyHiddenAccordions = {
+  marketResearch: {
+    title: 'What convinced me this problem was worth solving?',
+    paragraphs: splitParagraphs(
+      "The signal wasn't coming from one direction. Customer Success was hearing frustration from users who felt the platform wasn't delivering on its promise. Business owners were expressing the same thing from the other side — they were offering real value and watching it go unclaimed. Merchant roundtables confirmed it independently. Discounts were everywhere on the platform and creating value for almost no one. That convergence across three separate sources gave me confidence that this wasn't an edge case — it was a structural problem worth solving properly.",
+    ),
+  },
+  userResearch: {
+    title: 'Why were users walking away from valuable offers?',
+    paragraphs: splitParagraphs(
+      "Across interviews, surveys, behavioral analysis, and journey mapping, one pattern kept repeating at the moment of decision. Users weren't leaving because the offer wasn't good enough. They were hesitating right before claiming it — and that hesitation had a consistent source. They didn't know how redemption worked. They weren't sure what happened after purchase. They suspected hidden conditions might be waiting for them at the register.\n\nThe coupon's value was never in question. The confidence to use it was. Uncertainty, it turned out, had a far greater impact on behavior than price ever did.\n\nPersonas\n\nThe research produced two distinct behavioral profiles — not defined by demographics, but by their relationship with uncertainty and trust in the redemption process.\n\nThe Cautious Claimer. Engages with offers regularly but abandons at the point of commitment. Not price-sensitive — risk-sensitive. Needs to understand exactly what happens after they tap \"claim\" before they're willing to do it. One unexpected condition at the register is enough to erode trust entirely.\n\nThe Business Owner. Publishing offers with genuine intent but losing confidence in the platform when redemption stays low. Doesn't know if the problem is the offer itself, the placement, or something upstream in the user experience. Needs visibility into what's happening between publish and redemption.",
+    ),
+  },
+}
 
 export const easyData = {
   title: 'Easy App × From an Ignored Feature to a Key Driver, 6% User Adoption',
@@ -34,7 +42,7 @@ export const easyData = {
     {
       type: 'text',
       highlight:
-        'Context. Easy helped millions of users discover local businesses, but its discounts never became a real product. Offers sat on the platform, visible to everyone, claimed by almost no one.',
+        'Context. Easy offered discounts from local businesses, but almost nobody used them. Users were seeing the offers; the challenge was understanding what stopped an attractive discount from becoming something they were willing to claim.',
     },
     {
       type: 'media',
@@ -42,11 +50,6 @@ export const easyData = {
       images: [{ src: flowImage, alt: 'Complete coupon purchase flow' }],
       caption:
         'Claiming a coupon became a guided flow — selection, purchase, redemption — instead of one vague tap. Users were afraid of hidden conditions and surprise charges, so I broke the action into steps they could see coming, which turned a hesitant glance into a clear path to ownership.',
-    },
-    {
-      type: 'text',
-      highlight:
-        'Problem Statement. I set out to find what kept users from claiming offers they\'d already said they wanted, and design an experience they could trust from the moment they saw a deal to the moment they redeemed it.',
     },
     {
       type: 'media',
@@ -61,11 +64,7 @@ export const easyData = {
     {
       type: 'text',
       highlight:
-        'Market Research. I started with the business perspective. Product analytics showed strong visibility but very low redemption — people saw the offers and scrolled past them.',
-      body: {
-        title: 'What convinced me this problem was worth solving?',
-        paragraphs: marketResearchParagraphs,
-      },
+        'Hypothesis. We had several plausible explanations: perhaps the discounts were not valuable enough, the offers were not prominent enough, or users simply did not understand how claiming and redeeming them worked.',
     },
     {
       type: 'media',
@@ -77,21 +76,21 @@ export const easyData = {
     {
       type: 'text',
       highlight:
-        'User Research. I expected to find a pricing problem. Instead, I discovered uncertainty had a much bigger impact on behavior than price ever did.',
-      body: {
-        title: 'Why were users walking away from valuable offers?',
-        paragraphs: userResearchParagraphs,
-      },
+        'Research. Product analytics and user research challenged our initial assumptions. Users were already noticing the offers and understood the value of the discounts. What stopped them was uncertainty: they did not know who stood behind the offer, whether it was still valid, whether the business would honor it, or exactly what would happen when they tried to use it.',
     },
     {
       type: 'text',
       highlight:
-        'Key Insight. Trust, not discount size, decided whether people acted. Once I saw that, every product decision became a lot clearer.',
+        'Insight. Every unanswered question became a reason to hesitate. Trust depended less on making the offer look more attractive and more on giving users enough information to feel confident acting on it.',
+    },
+    {
+      type: 'text',
+      highlight:
+        'Principles. The insight gave us four principles for the redesign: establish trust first, remove uncertainty, make the value explicit, and help users make confident decisions.',
     },
     {
       type: 'principles',
-      intro:
-        'Design Principles. Four principles followed directly from the insight that trust — not discount size — decides whether people act.',
+      hideIntro: true,
       principles: [
         { title: 'Trust first', icon: trustFirstIcon },
         { title: 'Reduce uncertainty', icon: reduceUncertaintyIcon },
@@ -102,7 +101,16 @@ export const easyData = {
     {
       type: 'text',
       highlight:
-        'Solution. Every part of the experience was redesigned to make claiming and redeeming a coupon feel simple, predictable, and trustworthy.',
+        'Decision. We chose transparency over persuasion. Instead of hiding details that might create friction, we surfaced them early — including the actual price of paid coupons. If users discovered a condition or cost only after deciding to claim an offer, we risked reinforcing the exact distrust we were trying to remove.',
+    },
+    {
+      type: 'text',
+      highlight: 'Trust came from answering questions before users had to ask them.',
+    },
+    {
+      type: 'text',
+      highlight:
+        'Solution. We treated every source of uncertainty as a product question to answer. Offers clearly showed who provided the discount, how long it remained valid, what conditions applied, what a paid coupon cost, and what users needed to do to claim and redeem it.',
     },
     {
       type: 'media',
@@ -114,7 +122,7 @@ export const easyData = {
     {
       type: 'text',
       highlight:
-        'Usability Testing. Each round of testing turned up a new moment of hesitation I hadn’t caught yet — a term that read as ambiguous, a step that felt like a commitment before it should have. Fixing those one at a time is what got the experience to a place where people moved through it without stopping to second-guess themselves.',
+        'Testing. Each round of usability testing exposed another moment of hesitation — an unclear condition, an unexpected commitment, or uncertainty about what happened next. We addressed those moments one by one until users could move through the experience without having to second-guess the offer.',
     },
     {
       type: 'media',
@@ -135,7 +143,7 @@ export const easyData = {
     {
       type: 'text',
       highlight:
-        'Impact. The redesign turned an overlooked feature into an adopted product: 6% adoption among active users, 5.4K quarterly coupon claims, and 850 onboarded businesses. It also gave Easy its first scalable coupon platform — the foundation for every promotional experience that comes after it.',
+        'Impact. Within the first month, coupon usage grew from nearly 0% to 6% of active users. The redesign turned an almost-unused feature into something users were willing to act on by replacing uncertainty with clear, trustworthy information.',
     },
     {
       type: 'impact',
@@ -153,7 +161,7 @@ export const easyData = {
     {
       type: 'text',
       highlight:
-        'Reflection. This project changed how I think about trust. People rarely hesitate because they don’t see the value — they hesitate because they don’t understand what happens next. Since Easy, I look for uncertainty before I look for usability problems, on onboarding flows, payments, AI products, enterprise systems, all of it. Innovation succeeds when people feel confident enough to embrace the change, not just interested in it.',
+        'Reflection. This project changed how I think about trust in product design. Trust is rarely created by asking users to believe us. It comes from removing the reasons they have to doubt. Since Easy, I look for unanswered questions whenever users hesitate — especially around payments, onboarding, and unfamiliar product experiences.',
     },
     {
       type: 'text',
