@@ -81,7 +81,8 @@ export const robonoteData = {
     },
     {
       type: 'text',
-      highlight: 'Less choice meant clearer responsibility.',
+      highlight:
+        'We deliberately gave users fewer choices, so each role could focus on what actually required their attention.',
     },
     {
       type: 'text',
